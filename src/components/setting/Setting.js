@@ -17,9 +17,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Matching = () => {
+const Setting = () => {
     const classes = useStyles();
+    let history = useHistory();
     let [loading, setLoading] = useState(false);   
+
 
     return (
         <div>
@@ -30,22 +32,32 @@ const Matching = () => {
             </Grid>
             <Grid container style={{marginTop:"50px"}}>
                 <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                    <Link to='/cards/questions'>
+                    <Link to='/setting/mypage'>
                         <button className={clsx('btn_1', 'margin_30')}>
-                            나의 BEST 카드 찾기
+                           마이페이지
                         </button>
                     </Link>
                 </Grid>
                 <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                    <Link to='/cards/ranking'>
+                    <button className={clsx('btn_1')}>
+                        로그아웃
+                    </button>
+                </Grid>
+                <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                    <Link to='/policy'>
                         <button className={clsx('btn_2', 'margin_30')}>
-                            인기카드 Top 10
+                            약관 및 정책
                         </button>
                     </Link>
+                </Grid>
+                <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                    <button className={clsx('btn_3')}>
+                        회원 탈퇴
+                    </button>
                 </Grid>
             </Grid>
         </div>
     );
 }
 
-export default Matching;
+export default Setting;

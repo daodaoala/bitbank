@@ -9,6 +9,8 @@ import Matching from './financialMatching/Matching'
 import Poll from './financialMatching/Poll'
 import CardRecommendation from './financialMatching/CardRecommendation'
 import CardRanking from './financialMatching/CardRanking'
+import Setting from './setting/Setting'
+import Policy from './setting/Policy'
 
 const useStyles = makeStyles((theme) => ({
     root:{
@@ -28,8 +30,7 @@ const Section = () => {
     // const location = useLocation();
 
     return (
-    <Box className={cls.root} display="flex" justifyContent="center">
-        {/* <Router> */}
+        <Box className={cls.root} display="flex" justifyContent="center">
             <Route path="/" component={Home} exact/>
             <Route path="/login" component={Login} exact/>
             <Route path="/signup" component={SignUp} exact/>
@@ -37,9 +38,9 @@ const Section = () => {
             <Route path="/cards/questions" component={Poll} exact/>
             <Route path="/cards/profits" component={CardRecommendation} exact/>
             <Route path="/cards/ranking" component={CardRanking} exact/>
-        {/* </Router> */}
-    </Box>
-
+            <Route path="/setting" component={Setting} exact/>
+            <Route path="/policy" component={Policy} exact/>
+        </Box>
     );
 
 }

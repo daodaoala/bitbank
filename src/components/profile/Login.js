@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@mui/styles';
+import clsx from 'clsx'
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -143,7 +144,7 @@ const Login = () => {
                         </div>
                     </Grid>
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                        <button className='btn_1'>
+                        <button className={clsx('btn_1', 'margin_30')}>
                             로그인
                         </button>
                     </Grid>

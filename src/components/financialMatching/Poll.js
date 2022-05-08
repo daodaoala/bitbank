@@ -62,7 +62,8 @@ const Poll = () => {
                 <ArrowBackIosIcon style={{margin: '8px 0 0 -8px', color: '#6E6E6E'}} onClick={goBack}/>
                 <div className={clsx('item_center','subtitle_2')}>나에게 가장 좋은 카드는?</div>
             </div>
-            <div className="subtitle_1">소비패턴을 더 정확하게 입력할수록,<br/>최고의 카드를 찾을 확률이 높아집니다!</div>
+            <div className="subtitle_4">소비패턴을 더 정확하게 입력할수록,<br/>최고의 카드를 찾을 확률이 높아집니다!</div>
+            <div className="info">(※숫자만 입력하세요.※)</div>
             <form className={classes.root} noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
@@ -136,7 +137,7 @@ const Poll = () => {
 
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
                         <Link to='/cards/profits'>
-                            <button className='btn_1' onClick={handleClick}>
+                            <button className={clsx('btn_1', 'margin_30')} onClick={handleClick}>
                                 완료
                             </button>
                         </Link>

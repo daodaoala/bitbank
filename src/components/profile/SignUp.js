@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import clsx from 'clsx'
 import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -87,7 +88,7 @@ const SignUp = () => {
                     </Grid>
 
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                        <button className='btn_1' onClick={() => {setValidCheck(true);handleValidButton();}}>
+                        <button className={clsx('btn_1', 'margin_30')} onClick={() => {setValidCheck(true);handleValidButton();}}>
                             완료
                         </button>
                     </Grid>

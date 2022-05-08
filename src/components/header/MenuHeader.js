@@ -35,9 +35,11 @@ const MenuHeader = () => {
                         </Box>
                         <Box className={clsx("header_menu", menu===0 && "clickedMenu")} onClick={()=>setMenu(0)}>가계부</Box>
                         <Link to='/cards'>
-                            <Box className={clsx("header_menu", menu===1 && "clickedMenu")} onClick={(e)=>{setMenu(1); history.push("/cards");}}>금융매칭</Box>
+                            <Box className={clsx("header_menu", menu===1 && "clickedMenu")} onClick={(e)=>setMenu(1)}>금융매칭</Box>
                         </Link>
-                        <Box className={clsx("header_menu", menu===2 && "clickedMenu")} onClick={()=>{setMenu(2); window.location.replace("/cards");}}>설정</Box>
+                        <Link to='/setting'>
+                            <Box className={clsx("header_menu", menu===2 && "clickedMenu")} onClick={()=>setMenu(2)}>설정</Box>
+                        </Link>
                         <Link to='/login'>
                             <Box alignItems="center" onClick={()=>setMenu(4)}>
                                 <button className="loginBtn">로그인</button>

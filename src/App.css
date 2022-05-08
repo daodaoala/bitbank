@@ -105,10 +105,31 @@ a{
   margin-bottom: 30px;
   white-space: nowrap;
 }
+.subtitle_4{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 0 30px;
+  text-align: center;
+  color: #676767;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+.info{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 0 30px;
+  text-align: center;
+  color: #FA5858;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
 .btn_1 {
   width: 300px;
   padding: 15px;
-  margin: 20px 0;
   border-radius: 26px;
   background-color: #fff;
   border: 2px solid #2167C2;
@@ -131,6 +152,21 @@ a{
   font-weight: 600;
   font-size: 20px;
   color: #2167C2;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 3px;
+}
+.btn_3{
+  width: 300px;
+  padding: 15px;
+  border-radius: 26px;
+  background-color: #fff;
+  border: 2px solid #fe301f;
+  color: #fe301f;
+  font-family: 'Do Hyeon', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.5;
@@ -214,18 +250,15 @@ a{
   border-radius: 4px;
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 12%);
 }
-.rank_JrkfK {
-  /* position: absolute;
-  top: 14px;
-  left: -8px; */
-  /* display: block; */
-  width: 68px;
-  height: 51px;
-  padding: 6px 0 0 8px;
-  color: #fff;
-  /* background-image: url('img/ranking1.png'); */
-  background-repeat: no-repeat;
-  font-size: 16px;
-  font-weight: 900;
-  z-index: 100;
+
+#txtField.MuiOutlinedInput-input{
+  width: 280px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #333333;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.7;
+  letter-spacing: 1px;
 }
