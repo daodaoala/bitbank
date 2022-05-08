@@ -147,7 +147,7 @@ const Login = () => {
                             로그인
                         </button>
                     </Grid>
-                    <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}} onClick={() => window.location.replace("/signup")}>
+                    <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
                         <Link to='/signup'>
                             <button className='btn_2'>
                                 회원가입

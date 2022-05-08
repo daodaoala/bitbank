@@ -56,12 +56,12 @@ function App() {
   return (
    <>
     <ThemeProvider theme={theme}>
-      <>
+      <Router>
         <div></div>
         <MenuHeader />   
         <Section />
         {/* <MenuFooter /> */}
-      </>
+      </Router>
     </ThemeProvider>
    </>
   );

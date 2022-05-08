@@ -13,38 +13,16 @@ const useStyles = makeStyles((theme) => ({
         "&.MuiAppBar-root":{
             backgroundColor: '#F2F2F2',
             borderBottom:"1px solid #F2F2F2",
-            padding: "20px 3px 10px"
+            padding: "20px 5px 10px"
             // boxShadow: "none"
         },
-    },
-    mainToolbar: {
-        display: "flex",
-        justifyContent: "space-between",
-    },
-    menuContainer: {
-        display: 'flex',
-        cursor: "pointer",
-        justifyContent: "space-between",
-        // minWidth: "600px"
-    },
-    menuButton: {
-        // // fontSize: "17px",
-        // color: "#1b1b1b",
-        // fontWeight: "bold",
-        // lineHeight: "27px",
-        // margin:"0 35px",
-        // padding: "15px 0 14px",
-        // whiteSpace:"nowrap",
-        // '&:hover':{
-        //     borderBottom:"4px solid #fe9601",
-        // }
     },
 }));
 
 const MenuHeader = () => {
     const cls = useStyles();
     let history = useHistory();
-    const [menu, setMenu] = useState(0); 
+    const [menu, setMenu] = useState(4); 
 
     return (
         <>
@@ -60,9 +38,11 @@ const MenuHeader = () => {
                             <Box className={clsx("header_menu", menu===1 && "clickedMenu")} onClick={(e)=>{setMenu(1); history.push("/cards");}}>금융매칭</Box>
                         </Link>
                         <Box className={clsx("header_menu", menu===2 && "clickedMenu")} onClick={()=>{setMenu(2); window.location.replace("/cards");}}>설정</Box>
-                        <Box alignItems="center">
-                            <button className="loginBtn" onClick={() => window.location.replace("/login")}>로그인</button>
-                        </Box>
+                        <Link to='/login'>
+                            <Box alignItems="center" onClick={()=>setMenu(4)}>
+                                <button className="loginBtn">로그인</button>
+                            </Box>
+                        </Link>
                     </Box>
                 </Container>
             </AppBar>

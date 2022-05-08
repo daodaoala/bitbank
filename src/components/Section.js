@@ -29,15 +29,15 @@ const Section = () => {
 
     return (
     <Box className={cls.root} display="flex" justifyContent="center">
-        <Router>
+        {/* <Router> */}
             <Route path="/" component={Home} exact/>
             <Route path="/login" component={Login} exact/>
             <Route path="/signup" component={SignUp} exact/>
             <Route path="/cards" component={Matching} exact/>
-            <Route path="/questions" component={Poll} exact/>
-            <Route path="/profits" component={CardRecommendation} exact/>
-            <Route path="/ranking" component={CardRanking} exact/>
-        </Router>
+            <Route path="/cards/questions" component={Poll} exact/>
+            <Route path="/cards/profits" component={CardRecommendation} exact/>
+            <Route path="/cards/ranking" component={CardRanking} exact/>
+        {/* </Router> */}
     </Box>
 
     );

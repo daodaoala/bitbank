@@ -59,7 +59,7 @@ const Poll = () => {
         <div>
             {/* <Loader loading={loading} /> */}
             <div className='center'>
-                <ArrowBackIosIcon style={{margin: '8px 0 0 -10px'}} onClick={goBack}/>
+                <ArrowBackIosIcon style={{margin: '8px 0 0 -8px', color: '#6E6E6E'}} onClick={goBack}/>
                 <div className={clsx('item_center','subtitle_2')}>나에게 가장 좋은 카드는?</div>
             </div>
             <div className="subtitle_1">소비패턴을 더 정확하게 입력할수록,<br/>최고의 카드를 찾을 확률이 높아집니다!</div>
@@ -134,8 +134,8 @@ const Poll = () => {
                         </div>
                     </Grid>
 
-                    <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}  onClick={() => window.location.replace("/profits")}>
-                        <Link to='/profits'>
+                    <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                        <Link to='/cards/profits'>
                             <button className='btn_1' onClick={handleClick}>
                                 완료
                             </button>
