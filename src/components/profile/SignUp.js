@@ -50,11 +50,10 @@ const SignUp = () => {
     return (
         <div>
             {/* <Loader loading={loading} /> */}
-            <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                <img src="./img/logo.png" width="23px" height="35px" style={{margin:"28px 0", paddingLeft:"30px"}}/>
-                <div className='logo_subtitle'>ITBANK</div>
+            <Grid item xs={12} style={{ margin: '30px 0' }}>
+                <div className="subtitle_5">환영합니다!</div>
+                <div className="info2">회원가입을 위해 해당 정보를 기입해주세요.</div>
             </Grid>
-            <div className="subtitle">회원가입</div>
             <form className={classes.root} noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>

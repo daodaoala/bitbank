@@ -101,7 +101,6 @@ const Login = () => {
 
     return (
         <div>
-            {/* <Loader loading={loading} /> */}
             <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
                 <img src="./img/logo.png" width="23px" height="35px" style={{margin:"28px 0", paddingLeft:"30px"}}/>
                 <div className='logo_subtitle'>ITBANK</div>

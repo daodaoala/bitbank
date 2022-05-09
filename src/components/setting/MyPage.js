@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
+        margin: "30px 0"
     },
 }));
 
@@ -53,10 +54,8 @@ const MyPage = () => {
         <div>
             {/* <Loader loading={loading} /> */}
             <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                <img src="./img/logo.png" width="23px" height="35px" style={{margin:"28px 0", paddingLeft:"30px"}}/>
-                <div className='logo_subtitle'>ITBANK</div>
+                <div className="subtitle">회원 정보 수정</div>
             </Grid>
-            <div className="subtitle">회원 정보 수정</div>
             <hr/>
                 <div className="info1">
                     회원정보는 개인정보처리방침에 따라 안전하게 보호되며, 회원님의 명백한 동의 없이 공개 또는 제 3자에게 제공되지 않습니다. 

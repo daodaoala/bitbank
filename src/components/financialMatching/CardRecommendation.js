@@ -31,7 +31,7 @@ const CardRecommendation = ({ history }) => {
             </div>
             <div className="subtitle_3">입력하신 소비 패턴에 맞게<br/>많은 혜택을 받을 수 있는 카드를 찾았어요!</div>
             <Grid container>
-                <Grid item xs={12} style={{ justifyContent: 'center' }}>
+                <Grid item xs={12} style={{ justifyContent: 'center', marginTop: '30px' }}>
                     <div className='paper'>
                         <div className='card_company'>삼성카드</div>
                         <div className='card_name'>1. 삼성카드 taptap O</div>

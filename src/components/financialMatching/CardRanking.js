@@ -25,9 +25,9 @@ const CardRanking = () => {
                 <ArrowBackIosIcon style={{margin: '8px 15px 0 -30px', color: '#6E6E6E'}} onClick={goBack}/>
                 <div className={clsx('item_center','subtitle_2')}>인기카드 Top 10</div>
             </div>
-            <div className={clsx('item_center','subtitle_1')}>카드사의 대표적인<br/>1위부터 10위 카드를 소개합니다!</div>
+            <div className={clsx('item_center','subtitle_3')}>카드사의 대표적인<br/>1위부터 10위 카드를 소개합니다!</div>
             <Grid container>
-                <Grid item xs={12} style={{ justifyContent: 'center' }}>
+                <Grid item xs={12} style={{ justifyContent: 'center', marginTop: '30px' }}>
                     <div className='paper'>
                         <div className='card_company'>삼성카드</div>
                         <div className='card_name'>1. 삼성카드 taptap O</div>
