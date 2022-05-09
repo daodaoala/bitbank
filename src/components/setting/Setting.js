@@ -6,14 +6,6 @@ import Grid from '@mui/material/Grid';
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        fontFamily: "IBM Plex Sans KR",
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: 300,
-        },
-        display: "flex",
-    },
 }));
 
 
@@ -32,26 +24,26 @@ const Setting = () => {
             </Grid>
             <Grid container style={{marginTop:"50px"}}>
                 <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                    <Link to='/setting/mypage'>
-                        <button className={clsx('btn_1', 'margin_30')}>
+                    <Link to='mypage'>
+                        <button className={clsx('btn_1')}>
                            마이페이지
                         </button>
                     </Link>
                 </Grid>
                 <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                    <button className={clsx('btn_1')}>
+                    <button className={clsx('btn_1', 'margin_30')}>
                         로그아웃
                     </button>
                 </Grid>
                 <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
                     <Link to='/policy'>
-                        <button className={clsx('btn_2', 'margin_30')}>
+                        <button className={clsx('btn_2')}>
                             약관 및 정책
                         </button>
                     </Link>
                 </Grid>
                 <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                    <button className={clsx('btn_3')}>
+                    <button className={clsx('btn_3', 'margin_30')}>
                         회원 탈퇴
                     </button>
                 </Grid>

@@ -2,11 +2,17 @@
 a{
   text-decoration: none;
 }
+.margin_20 {
+  margin: 20px 0;
+}
 .margin_30 {
   margin: 30px 0;
 }
-.margin_10 {
+.margin_5 {
   margin: 0 5px;
+}
+.margin_30_10 {
+  margin: 30px 10px;
 }
 
 .item_center {
@@ -17,6 +23,10 @@ a{
 .center {
   display: flex;
   justify-content: center;
+}
+.between {
+  display: flex;
+  justify-content: space-between;
 }
 .logo{
   font-family: 'Do Hyeon', sans-serif;
@@ -64,9 +74,9 @@ a{
   letter-spacing: 5px;
 }
 .subtitle{
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 19px;
   padding: 0 30px;
   text-align: center;
   color: #676767;
@@ -127,6 +137,15 @@ a{
   margin-bottom: 10px;
   white-space: nowrap;
 }
+.info1{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+  font-size: 11.5px;
+  padding: 0 30px;
+  text-align: center;
+  color: #676767;
+  letter-spacing: 1px;
+}
 .btn_1 {
   width: 300px;
   padding: 15px;
@@ -134,8 +153,8 @@ a{
   background-color: #fff;
   border: 2px solid #2167C2;
   color: #2167C2;
-  font-family: 'Do Hyeon', sans-serif;
-  font-weight: 600;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
   font-size: 20px;
   font-stretch: normal;
   font-style: normal;
@@ -148,8 +167,8 @@ a{
   border-radius: 26px;
   background-color: #f5f4f5;
   border: 4px solid #f5f4f5;
-  font-family: 'Do Hyeon', sans-serif;
-  font-weight: 600;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
   font-size: 20px;
   color: #2167C2;
   font-stretch: normal;
@@ -164,8 +183,23 @@ a{
   background-color: #fff;
   border: 2px solid #fe301f;
   color: #fe301f;
-  font-family: 'Do Hyeon', sans-serif;
-  font-weight: 600;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 3px;
+}
+.btn_4 {
+  width: 130px;
+  padding: 15px;
+  border-radius: 35px;
+  background-color: #fff;
+  border: 2px solid #2167C2;
+  color: #2167C2;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
   font-size: 20px;
   font-stretch: normal;
   font-style: normal;
@@ -235,6 +269,13 @@ a{
 .form_txt_1{
   width: 209px;
   height: 15px;
+  padding: 16.5px 14px;
+  border-radius: 7px;
+  border: 1px solid #BDBDBD;
+}
+.form_txt_login{
+  width: 260px;
+  height: 20px;
   padding: 16.5px 14px;
   border-radius: 7px;
   border: 1px solid #BDBDBD;

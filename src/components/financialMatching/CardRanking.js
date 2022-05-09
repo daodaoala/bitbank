@@ -7,14 +7,6 @@ import Grid from '@mui/material/Grid';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        fontFamily: "IBM Plex Sans KR",
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: 300,
-        },
-        display: "flex",
-    },
 }));
 
 

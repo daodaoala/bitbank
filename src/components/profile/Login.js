@@ -4,16 +4,10 @@ import clsx from 'clsx'
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        fontFamily: "IBM Plex Sans KR",
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: 300,
-        },
         display: "flex",
     },
 }));
@@ -116,31 +110,10 @@ const Login = () => {
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
                         <div className="item_center">
-                            <TextField
-                                id="memberLoginid"
-                                placeholder="아이디를 입력하세요"
-                                variant="outlined"
-                                size="large"
-                                name="username"
-                                value={memberLoginid}
-                                // error={memberLoginid === "" ? true : false}
-                                onChange={handleChange}
-                                onKeyPress={onKeyPress}
-                            />
+                            <input type="text" placeholder="아이디를 입력하세요" className={clsx('margin_20','form_txt_login')} value={memberLoginid} name="memberLoginid" onChange={handleChange} />
                         </div>
                         <div className="item_center">
-                            <TextField
-                                id="memberPassword"
-                                placeholder="비밀번호를 입력하세요"
-                                variant="outlined"
-                                size="large"
-                                name="password"
-                                value={memberPassword}
-                                // error={memberPassword === "" ? true : false}
-                                onChange={handleChange}
-                                type="memberPassword"
-                                onKeyPress={onKeyPress}
-                            />
+                            <input type="password" placeholder="비밀번호를 입력하세요" className={clsx('form_txt_login')} value={memberPassword} name="memberPassword" onChange={handleChange} />
                         </div>
                     </Grid>
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>

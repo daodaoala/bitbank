@@ -6,14 +6,6 @@ import Grid from '@mui/material/Grid';
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        fontFamily: "IBM Plex Sans KR",
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: 300,
-        },
-        display: "flex",
-    },
 }));
 
 

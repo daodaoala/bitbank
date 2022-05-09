@@ -11,6 +11,7 @@ import CardRecommendation from './financialMatching/CardRecommendation'
 import CardRanking from './financialMatching/CardRanking'
 import Setting from './setting/Setting'
 import Policy from './setting/Policy'
+import MyPage from './setting/MyPage'
 
 const useStyles = makeStyles((theme) => ({
     root:{
@@ -40,6 +41,7 @@ const Section = () => {
             <Route path="/cards/ranking" component={CardRanking} exact/>
             <Route path="/setting" component={Setting} exact/>
             <Route path="/policy" component={Policy} exact/>
+            <Route path="/mypage" component={MyPage} exact/>
         </Box>
     );
 
