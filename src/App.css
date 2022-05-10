@@ -21,6 +21,9 @@ a {
 .margin_30_10 {
   margin: 30px 10px;
 }
+.padding_10 {
+  padding: 0 10px;
+}
 .txt_left {
  text-align: left;
 }

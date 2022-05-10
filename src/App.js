@@ -25,6 +25,12 @@ const theme = createTheme({
     root: {
       main: '#FFFFFF' 
     },
+    primary: {
+      main: '#3f51b5',
+    },
+    secondary: {
+      main: '#fe301f',
+    },
   },
   overrides: {
     MuiButton: {
