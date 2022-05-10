@@ -37,7 +37,7 @@ const Login = () => {
 
     const onKeyPress = (e) => {
         if (e.key == 'Enter') {
-            handleClick();
+            handleValid();
         }
     }
 
@@ -80,7 +80,7 @@ const Login = () => {
         setLoading(false);
     }
 
-    const handleClick = (e) => {
+    const handleValid = (e) => {
         e.preventDefault();
         if (!memberLoginid) {
             setIDcheck(true);
@@ -108,7 +108,7 @@ const Login = () => {
                         </div>
                     </Grid>
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                        <button className={clsx('btn_1', 'margin_30')} onClick={handleClick}>
+                        <button className={clsx('btn_1', 'margin_30')} onClick={handleValid}>
                             로그인
                         </button>
                     </Grid>
