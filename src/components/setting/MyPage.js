@@ -54,7 +54,7 @@ const MyPage = () => {
         <div>
             {/* <Loader loading={loading} /> */}
             <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                <div className="subtitle">회원 정보 수정</div>
+                <div className="subtitle_2">회원 정보 수정</div>
             </Grid>
             <hr/>
                 <div className="info1">

@@ -15,7 +15,7 @@ import MyPage from './setting/MyPage'
 
 const useStyles = makeStyles((theme) => ({
     root:{
-        marginTop:"110px", 
+        marginTop:"140px", 
         padding: "0 100px", 
         minHeight: "calc( 100vh - 594px )",
         height:"auto",

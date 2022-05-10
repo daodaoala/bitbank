@@ -21,7 +21,15 @@ a {
 .margin_30_10 {
   margin: 30px 10px;
 }
-
+.txt_left {
+ text-align: left;
+}
+.txt_right {
+  text-align: right;
+}
+.txt_center {
+  text-align: center
+}
 .item_center {
   display: flex;
   align-items: center;
@@ -38,22 +46,23 @@ a {
 .logo {
   font-family: 'Do Hyeon', sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 24px;
   color: #2167C2;
   letter-spacing: 3px;
-  margin: 10px 3px;
+  margin: 10px -15px;
 }
 .header_menu {
+  width: 97px;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 600;
   font-size: 14px;
   color: #434444;
   letter-spacing: 3px;
-  margin: 10px 3px;
+  margin: 10px 0px;
 }
 .loginBtn {
   width: 70px;
-  height: 40px;
+  height: 35px;
   border: 2px solid #2167C2;
   border-radius: 20px;
   background-color: #FFFFFF;
@@ -67,6 +76,7 @@ a {
   text-align: center;
   color: #2167C2;
   cursor: pointer;
+  padding: 5px 0;
 }
 .clickedMenu {
   color: #2167C2;
@@ -109,7 +119,7 @@ a {
   text-align: center;
   color: #2167C2;
   letter-spacing: 1px;
-  margin-bottom: 30px;
+  margin: 10px 0 30px;
   white-space: nowrap;
 }
 .subtitle_3 {
