@@ -10,7 +10,7 @@ const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      mobile: 400,
+      mobile: 500,
       sm: 600,
       md: 800,
       lg: 1400,
@@ -19,7 +19,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: `"Noto Sans KR", "Helvetica", "Arial", sans-serif`,
-    fontSize: 12,
+    fontSize: 16,
   },
   palette: {
     root: {

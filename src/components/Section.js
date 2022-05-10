@@ -15,20 +15,19 @@ import MyPage from './setting/MyPage'
 
 const useStyles = makeStyles((theme) => ({
     root:{
-        marginTop:"140px", 
+        margin:"130px 0 100PX", 
         padding: "0 100px", 
         minHeight: "calc( 100vh - 594px )",
         height:"auto",
+        fontSize: "16px",
         [theme.breakpoints.up('lg')]: {
             padding: "0 300px", 
         },
-        // backgroundColor:"#F2F2F2"
     }
 }));
 
 const Section = () => {
     const cls = useStyles();
-    // const location = useLocation();
 
     return (
         <Box className={cls.root} display="flex" justifyContent="center">

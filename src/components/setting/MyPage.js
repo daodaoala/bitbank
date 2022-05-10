@@ -64,7 +64,7 @@ const MyPage = () => {
             <form className={classes.root} noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
-                        <div className={clsx('between', 'margin_20')}>
+                        <div className={clsx('between', 'margin_30')}>
                             <div className='form_name'>이름</div>
                             <div>
                                 {!editCheck ? (
@@ -74,7 +74,7 @@ const MyPage = () => {
                                 )}
                             </div>
                         </div>
-                        <div className={clsx('between', 'margin_20')}>
+                        <div className={clsx('between', 'margin_30')}>
                             <div className='form_name'>비밀번호</div>
                             <div>
                                 {!editCheck ? (

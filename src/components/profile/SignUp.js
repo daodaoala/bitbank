@@ -57,13 +57,13 @@ const SignUp = () => {
             <form className={classes.root} noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_30')}>
                             <div className='form_name'>이름</div>
                             <div>
                                 <input type="text" placeholder="이름을 입력하세요" className='form_txt_1' value={memberName} name="memberName" onChange={handleChange} />
                             </div>
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_30')}>
                             <div className='form_name'>아이디</div>
                             <div>
                                 <input type="text" placeholder="8자 이상의 아이디를 입력하세요" className='form_txt_1' value={memberLoginid} name="memberLoginid"  onChange={handleChange}/>
@@ -72,7 +72,7 @@ const SignUp = () => {
                         <div>
                             {(validCheck && !isValidLoginid) && <p>아이디 길이가 형식에 맞지 않습니다.</p>}
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_30')}>
                             <div className='form_name'>비밀번호</div>
                             <div>
                                 <input type="password" placeholder="영문/숫자/특수문자 포함 6자 이상 비밀번호를 입력하세요" className='form_txt_1' value={memberPassword} name="memberPassword" onChange={handleChange}/>

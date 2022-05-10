@@ -58,67 +58,67 @@ const Poll = () => {
             <form className={classes.root} noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>월 평균 사용금액</div>
                             <div>
                                 <input type="text" placeholder="월 평균 사용금액을 입력하세요" className={clsx('form_txt','margin_5')} value={memberName}/>
                             </div>
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>대중교통 금액</div>
                             <div>
                                 <input type="text" placeholder="한달 대중교통 금액을 입력하세요" className={clsx('form_txt','margin_5')} value={memberLoginid}/>
                             </div>
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>휴대폰 요금</div>
                             <div>
                                 <input type="text" placeholder="한달 휴대폰 요금을 입력하세요" className={clsx('form_txt','margin_5')} value={memberPassword}/>
                             </div>
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>식사</div>
                             <div>
                                 <input type="text" placeholder="한달 외식비를 입력하세요" className={clsx('form_txt','margin_5')} value={memberPassword}/>
                             </div>
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>카페</div>
                             <div>
                                 <input type="text" placeholder="한달 카페비용을 입력하세요" className={clsx('form_txt','margin_5')} value={memberPassword}/>
                             </div>
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>쇼핑</div>
                             <div>
                                 <input type="text" placeholder="한달 쇼핑금액을 입력하세요" className={clsx('form_txt','margin_5')} value={memberPassword}/>
                             </div>
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>주유</div>
                             <div>
                                 <input type="text" placeholder="한달 주유비를 입력하세요" className={clsx('form_txt','margin_5')} value={memberPassword}/>
                             </div>
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>서점</div>
                             <div>
                                 <input type="text" placeholder="한달 서점비를 입력하세요" className={clsx('form_txt','margin_5')} value={memberPassword}/>
                             </div>
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>보험</div>
                             <div>
                                 <input type="text" placeholder="한달 보험료를 입력하세요" className={clsx('form_txt','margin_5')} value={memberPassword}/>
                             </div>
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>대형마트</div>
                             <div>
                                 <input type="text" placeholder="한달 대형마트 쇼핑금액을 입력하세요" className={clsx('form_txt','margin_5')} value={memberPassword}/>
                             </div>
                         </div>
-                        <div style={{display:"flex", justifyContent:"space-between", margin:"20px 0"}}>
+                        <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>편의점</div>
                             <div>
                                 <input type="text" placeholder="한달 편의점 사용금액을 입력하세요" className={clsx('form_txt','margin_5')} value={memberPassword}/>

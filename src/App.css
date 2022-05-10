@@ -42,6 +42,12 @@ a {
 .between {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .logo {
   font-family: 'Do Hyeon', sans-serif;
@@ -136,7 +142,8 @@ a {
 .subtitle_5 {
   font-family: 'JalpullineunharuM';
   font-weight: 600;
-  font-size: 16px;
+  /* font-size: 16px; */
+  font-size: 1.2rem;
   padding: 0 30px;
   text-align: center;
   color: #6E6E6E;
@@ -291,7 +298,6 @@ a {
   letter-spacing: 1px;
   white-space: nowrap;
   text-align: left;
-  margin-top: 15px;
 }
 .form_txt {
   width: 190px;
@@ -369,11 +375,12 @@ a {
 }
 .body-contentbox {          
   overflow-y: auto;          
-  min-height: 100px;         
+  min-height: auto;         
   max-height: 300px;  
   color:#333333;       
   font-size: 13.5px;
   text-align: center;
+  margin-bottom: 20px;
 }
 .popup-footer {
   height: 35px;
@@ -403,4 +410,10 @@ a {
   font-style: normal;
   line-height: 1.7;
   letter-spacing: 1px;
+}
+
+#root .MuiAppBar-root {
+  background-color: #F2F2F2;
+  border-bottom: 1px solid #F2F2F2;
+  box-shadow: none;
 }
