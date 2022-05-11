@@ -6,6 +6,9 @@
 a {
   text-decoration: none;
 }
+span {
+  display: block;
+}
 .margin_20 {
   margin: 20px 0;
 }
@@ -201,6 +204,17 @@ a {
   line-height: 25px;
   white-space: nowrap;
 }
+.subtitle_6 {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+  font-size: 23px;
+  padding: 0 30px;
+  text-align: center;
+  color: #2167C2;
+  letter-spacing: 1px;
+  margin: 10px 0 30px;
+  white-space: pre;
+}
 .info {
   font-family: 'JalpullineunharuM';
   font-weight: 600;
@@ -376,6 +390,16 @@ a {
   border-radius: 7px;
   border: 1px solid #BDBDBD;
   text-align: right;
+}
+.error_msg {
+  color: #FE2E2E;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 .paper {
   width: 300px;

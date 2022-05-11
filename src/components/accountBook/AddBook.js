@@ -157,7 +157,7 @@ const AddBook = () => {
                                 ):(
                                     // 분류 선택안할 시에 카테고리 비활성화
                                     <FormControl fullWidth disabled style={{border: "1px solid #FFFFFF", borderRadius:"10px", margin: "0 5px 0 -10px"}}>
-                                        <InputLabel id="demo-simple-select-disabled-label">카테고리를 선택하세요.</InputLabel>
+                                        <InputLabel>카테고리를 선택하세요.</InputLabel>
                                         <Select
                                             style={{width: "210px", borderRadius:"10px"}}
                                         >

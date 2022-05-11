@@ -126,14 +126,15 @@ const MenuHeader = () => {
                                 </Container>
                             </Menu>
                         </div>
-
                     </div>
                 </Container>
             </AppBar>
             <AppBar className={cls.appBar1}>
                 <Container maxWidth="sm" style={{padding:"0px"}}>
                     <div className={clsx('around', 'menu_appbar')}>
-                        <Box className={clsx("header_menu", "txt_left", menu===0 && "clickedMenu")} onClick={()=>setMenu(0)}>가계부</Box>
+                        <Link to='/books/excel'>
+                            <Box className={clsx("header_menu", "txt_left", menu===0 && "clickedMenu")} onClick={()=>setMenu(0)}>가계부</Box>
+                        </Link>
                         <Link to='/cards'>
                             <Box className={clsx("header_menu", "txt_center", menu===1 && "clickedMenu")} onClick={(e)=>setMenu(1)}>금융매칭</Box>
                         </Link>

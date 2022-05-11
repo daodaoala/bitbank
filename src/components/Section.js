@@ -13,7 +13,8 @@ import Setting from './setting/Setting'
 import Policy from './setting/Policy'
 import MyPage from './setting/MyPage'
 import AddBook from './accountBook/AddBook'
-import BookInquiry from './accountBook/BookInquiry'
+import ExcelData from './accountBook/ExcelData'
+import PDFdata from './accountBook/PDFdata'
 
 const useStyles = makeStyles((theme) => ({
     root:{
@@ -44,8 +45,9 @@ const Section = () => {
             <Route path="/policy" component={Policy} exact/>
             <Route path="/mypage" component={MyPage} exact/>
             <Route path="/books/addbook" component={AddBook} exact/>
-            {/* <Route path="/books" component={BookInquiry} exact/> */}
-            {/* <Route path="/addbook" component={AddBook} exact/>
+            <Route path="/books/excel" component={ExcelData} exact/>
+            <Route path="/books/pdf" component={PDFdata} exact/>
+            {/*
             <Route path="/addbook" component={AddBook} exact/>
             <Route path="/addbook" component={AddBook} exact/>
             <Route path="/addbook" component={AddBook} exact/> */}
