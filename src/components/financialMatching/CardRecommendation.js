@@ -16,10 +16,6 @@ const useStyles = makeStyles((theme) => ({
 const CardRecommendation = ({ history }) => {
     const classes = useStyles();
     let [loading, setLoading] = useState(false);   
- 
-    const goBack = (e) => {
-        history.goBack();
-    };
 
     return (
         <div>

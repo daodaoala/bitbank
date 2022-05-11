@@ -21,6 +21,9 @@ a {
 .margin_30_10 {
   margin: 30px 10px;
 }
+.margin_40_10 {
+  margin: 40px 0 10px;
+}
 .padding_10 {
   padding: 0 10px;
 }
@@ -37,6 +40,11 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.item_left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .center {
   display: flex;
@@ -86,6 +94,44 @@ a {
   color: #2167C2;
   cursor: pointer;
   padding: 5px 0;
+}
+.categoryBtn {
+  width: 60px;
+  height: 35px;
+  border: 2px solid #2167C2;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  font-family: 'Do Hyeon', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2167C2;
+  cursor: pointer;
+  padding: 5px 0;
+  margin: 0 4px;
+}
+.clickCategoryBtn {
+  width: 60px;
+  height: 35px;
+  border: 2px solid #FA5858;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  font-family: 'Do Hyeon', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #FA5858;
+  cursor: pointer;
+  padding: 5px 0;
+  margin: 0 4px;
 }
 .clickedMenu {
   color: #2167C2;
@@ -322,6 +368,14 @@ a {
   padding: 16.5px 14px;
   border-radius: 7px;
   border: 1px solid #BDBDBD;
+}
+.form_txt_account {
+  width: 180px;
+  height: 15px;
+  padding: 16.5px 14px;
+  border-radius: 7px;
+  border: 1px solid #BDBDBD;
+  text-align: right;
 }
 .paper {
   width: 300px;

@@ -34,10 +34,6 @@ const Policy = () => {
     let [loading, setLoading] = useState(false);   
     const [terms, setTerms] = useState(false);   
     const [policy, setPolicy] = useState(false);
-    
-    const goBack = (e) => {
-        history.goBack();
-    };
 
     return (
         <div>

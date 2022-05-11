@@ -4,6 +4,8 @@ import clsx from 'clsx';
 import { Link, useHistory  } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+// import { PDFDownloadLink } from "@react-pdf/renderer";
+// import { PdfDocument } from "./Templete";
 
 const useStyles = makeStyles((theme) => ({
 }));
@@ -13,10 +15,13 @@ const CardRanking = () => {
     const classes = useStyles();
     let history = useHistory();
     let [loading, setLoading] = useState(false);   
+    const [page, setPage] = useState(1);
+    // const [show, setShow] = useState(true); 
 
-    const goBack = (e) => {
-        history.goBack();
-    };
+    // const data=[
+    //     ["삼성카드","1. 삼성카드 taptap O","대형마트 할인","삼성이 혜택을 책임지고 다 드립니다. 통신비에서 10프로 할인까지!"]
+    // ]
+
 
     return (
         <div>

@@ -45,9 +45,6 @@ const Poll = () => {
         }
     }
 
-    const goBack = (e) => {
-        history.goBack();
-    };
 
     return (
         <div>
