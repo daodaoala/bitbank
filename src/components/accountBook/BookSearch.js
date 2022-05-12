@@ -30,6 +30,7 @@ const defaultMenuProps = {
 
 const BookSearch = () => {
     let [loading, setLoading] = useState(false);     
+    const [searchList, setSearchList] = useState(0);                        // 검색어 목록
     const [accountBookType, setAccountBookType] = useState(0);              // 가계부 내역 유형
     const [expenditureType, setExpenditureType] = useState(["0"]);          // 지출 유형
     const [incomeType, setIncomeType] = useState(["0"]);                    // 수입 유형
@@ -43,7 +44,7 @@ const BookSearch = () => {
 
     useEffect(() => {
         localStorage.setItem('keywords', JSON.stringify(keywords))
-    }, [keywords])
+    }, [])
 
 
     //검색어 추가
@@ -100,11 +101,26 @@ const BookSearch = () => {
         } 
     }
 
+    const getSearchList = (e) => {
+        e.preventDefault();
+        setSearchList(1)
+    }
+    
     return (
         <div className='filter'>
             <div className={clsx('item_center')}> 
                 <SearchBar onAddKeyword={handleAddKeyword}></SearchBar>
             </div>
+            <Grid item xs={12} style={{ justifyContent: 'center'}}> 
+                <div>
+                    <History
+                        keywords={keywords}
+                        onClearKeywords={handleClearKeywords}
+                        onRemoveKeyword={handleRemoveKeyword}
+                    />
+                </div>    
+            </Grid>
+            
             <form className={clsx('item_center')} noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
@@ -228,20 +244,46 @@ const BookSearch = () => {
                             </>
                         )}
                     </Grid>
-
-                    <Grid item xs={12} style={{ justifyContent: 'center', marginTop: '20px' }}> 
-                        <div>
-                            <Box className="tab-market-search">
-                                <History
-                                    keywords={keywords}
-                                    onClearKeywords={handleClearKeywords}
-                                    onRemoveKeyword={handleRemoveKeyword}
-                                />
-                            </Box>
-                        </div>    
+                    <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                        <button className={clsx('btn_1', 'margin_40')} onClick={getSearchList}>
+                            조회
+                        </button>
                     </Grid>
                 </Grid>
             </form>
+            {searchList===1 && (
+                <div className='books_paper'>
+                <div className={clsx('books_data', 'between')}>  
+                    <div className='info4'>10일 화요일</div>
+                    <div className='info4'>-85.000원</div>
+                </div>
+                <hr/>
+                <div className={clsx('books_data', 'between')}>  
+                    <div className='info5'>김밥나라</div>
+                    <div className='books_price'>-5.000원</div>
+                </div>
+                <div className={clsx('books_data', 'between')}>  
+                    <div className='info5'>LGUPLUS 통신 요금 자동 청구 5월</div>
+                    <div className='books_price'>-60.000원</div>
+                </div>
+                <div className={clsx('books_data', 'between')}>  
+                    <div className='info5'>홈플러스</div>
+                    <div className='books_price'>-5.000원</div>
+                </div>
+                <div className={clsx('books_data', 'between')}>  
+                    <div className='info5'>이마트</div>
+                    <div className='books_price'>-5.000원</div>
+                </div>
+                <div className={clsx('books_data', 'between')}>  
+                    <div className='info5'>신세계 백화점</div>
+                    <div className='books_price'>-5.000원</div>
+                </div>
+                <div className={clsx('books_data', 'between')}>  
+                    <div className='info5'>롯데마트</div>
+                    <div className='books_price'>-5.000원</div>
+                </div>
+            </div>    
+            )}
         </div>
     );
 }

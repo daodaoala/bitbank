@@ -39,19 +39,19 @@ function SearchBar({ onAddKeyword }) {
   const [keyword, setKeyword] = useState('')
 
   const handleKeyword = (e) => {
-    setKeyword(e.target.value)
+        setKeyword(e.target.value)
   }
 
   const handleEnter = (e) => {
     if (keyword && e.keyCode === 13) {
       //엔터일때 부모의 addkeyword에 전달
-      onAddKeyword(keyword)
-      setKeyword('')
+        onAddKeyword(keyword)
+        setKeyword('')
     }
   }
 
   const handleClearKeyword = () => {
-    setKeyword('')
+        setKeyword('')
   }
 
   return (
