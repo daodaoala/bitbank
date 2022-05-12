@@ -4,7 +4,6 @@ import { Link, useHistory  } from 'react-router-dom';
 import clsx from 'clsx';
 import AppBar from "@mui/material/AppBar";
 import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail'
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Menu from '@mui/material/Menu';
@@ -132,7 +131,7 @@ const MenuHeader = () => {
             <AppBar className={cls.appBar1}>
                 <Container maxWidth="sm" style={{padding:"0px"}}>
                     <div className={clsx('around', 'menu_appbar')}>
-                        <Link to='/books/excel'>
+                        <Link to='/books'>
                             <Box className={clsx("header_menu", "txt_left", menu===0 && "clickedMenu")} onClick={()=>setMenu(0)}>가계부</Box>
                         </Link>
                         <Link to='/cards'>
