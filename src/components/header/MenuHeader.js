@@ -70,13 +70,13 @@ const MenuHeader = () => {
                             <img src="./img/logo.png" width="17px" height="25px" style={{margin:"10px 20px"}}/>
                             <div className='logo' onClick={() => window.location.replace("/")}>ITBANK</div>
                         </Box>
-                        {/* <Link to='/login'>
+                        <Link to='/login'>
                             <Box onClick={()=>setMenu(4)}>
                                 <button className="loginBtn">로그인</button>
                             </Box>
-                        </Link> */}
+                        </Link>
 
-                        <div style={{width:"35px", marginTop:"-10px"}}>
+                        {/* <div style={{width:"35px", marginTop:"-10px"}}>
                             <Badge badgeContent={99} color="primary">
                                 <NotificationsIcon style={{color:"#848484", fontSize:"30px"}} onClick={(e) => setShowNoti(true)}/>
                             </Badge>
@@ -116,15 +116,12 @@ const MenuHeader = () => {
                                                 </TableRow>
                                             </TableHead>
                                             <TableBody className={cls.MuiTableBody}>
-                                                {/* <Box textAlign="center" mt={5}>
-                                                    No data
-                                                </Box> */}
                                             </TableBody>
                                         </Table>
                                     </TableContainer>
                                 </Container>
                             </Menu>
-                        </div>
+                        </div> */}
                     </div>
                 </Container>
             </AppBar>

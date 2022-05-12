@@ -17,12 +17,12 @@ const Poll = () => {
     let history = useHistory();
     let [loading, setLoading] = useState(false);   
     const [userInfo, setUserInfo] = useState({
-        memberLoginid: '',
+        memberLoginId: '',
         memberPassword: '',
         memberName: '',
     });
 
-    const { memberLoginid, memberPassword, memberName } = userInfo;
+    const { memberLoginId, memberPassword, memberName } = userInfo;
 
     const handleChange = (e) => {
         const { value, name } = e.target;
@@ -39,7 +39,7 @@ const Poll = () => {
     }
 
     const handleClick = () => {
-        if (!memberLoginid) {
+        if (!memberLoginId) {
         }
         else if (!memberPassword) {
         }
@@ -64,7 +64,7 @@ const Poll = () => {
                         <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>대중교통 금액</div>
                             <div>
-                                <input type="text" placeholder="한달 대중교통 금액을 입력하세요" className={clsx('form_txt','margin_5')} value={memberLoginid}/>
+                                <input type="text" placeholder="한달 대중교통 금액을 입력하세요" className={clsx('form_txt','margin_5')} value={memberLoginId}/>
                             </div>
                         </div>
                         <div className={clsx('between', 'margin_20')}>

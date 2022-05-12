@@ -7,10 +7,6 @@ import Grid from '@mui/material/Grid';
 import OutputIcon from '@mui/icons-material/Output';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,7 +32,9 @@ const BookInquiry = () => {
             <div className={clsx('between','margin_10')}>
                 <div className='subtitle_6'>권설아님 가계부</div>
                 <div>
-                    <SearchIcon style={{ margin:"0 15px", color:"#676767", fontSize: "30px" }}/>
+                    <Link to='/books/search'>
+                        <SearchIcon style={{ margin:"0 15px", color:"#676767", fontSize: "30px" }}/>
+                    </Link>
                     <Link to='/books/excel'>
                         <OutputIcon style={{ color:"#676767", fontSize: "30px" }}/>
                     </Link>
@@ -136,28 +134,3 @@ const BookInquiry = () => {
 }
 
 export default BookInquiry;
-
-
-{/* <div className='books_paper'>
-<List sx={style} component="nav">
-    <ListItem button>
-        <ListItemText primary="Inbox" />
-    </ListItem>
-    <Divider />
-    <ListItem button divider>
-        <ListItemText primary="Drafts" />
-    </ListItem>
-    <ListItem button>
-        <ListItemText primary="Trash" />
-    </ListItem>
-    <Divider light />
-    <ListItem button>
-        <ListItemText primary="Spam" />
-    </ListItem>
-</List>
-<div className='card_company'>삼성카드</div>
-<div className='card_name'>1. 삼성카드 taptap O</div>
-<img src="http://db.kookje.co.kr/news2000/photo/2017/0915/L20170915.99099006474i1.jpg?37" height="80" width="150"/>
-<div className='tag_btn'>대형마트 할인</div>
-<div className='card_benefit'>삼성이 혜택을 책임지고 다 드립니다. 통신비에서 10프로 할인까지!</div>
-</div>               */}

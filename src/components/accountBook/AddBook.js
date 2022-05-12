@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
-import { Link, useHistory } from 'react-router-dom';
+import moment from 'moment';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,14 +13,6 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { expenditureOptions, incomeOptions, transferOptions } from './categoryData';
-
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: "flex",
-    },
-}));
-
 
 const defaultMenuProps = {
     PaperProps: {
@@ -33,7 +26,6 @@ const defaultMenuProps = {
 };
 
 const AddBook = () => {
-    const cls = useStyles();
     const [price, setPrice] = useState(0);                                  // 가계부 금액
     const [accountBookType, setAccountBookType] = useState(0);              // 가계부 내역 유형
     const [expenditureType, setExpenditureType] = useState(["0"]);          // 지출 유형
@@ -63,8 +55,9 @@ const AddBook = () => {
     }
 
     // 날짜 선택
-    const selectDate= (newValue) => {
-        setSearchDateType(newValue);
+    const handleSelectEndDate = (newValue) => {
+        const date = moment(newValue).format('YYYY-MM-DD HH:mm:ss');    // 날짜 포맷
+        setSearchDateType(date);
     };
 
     //가계부 세부 내역 유형
@@ -83,7 +76,7 @@ const AddBook = () => {
             {/* <Loader loading={loading} /> */}
             <div className={clsx('item_center','subtitle_2')}>가계부를 추가해보세요.</div>
             <div className="info">(※금액 입력 시 숫자만 입력하세요.※)</div>
-            <form className={cls.root} noValidate autoComplete="off">
+            <form className={clsx('item_center')} noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
                         <div className={clsx('between', 'margin_20')}>
@@ -172,7 +165,7 @@ const AddBook = () => {
                                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                                     <DateTimePicker
                                         value={searchDateType}
-                                        onChange={selectDate}
+                                        onChange={handleSelectEndDate}
                                         renderInput={(params) => <TextField {...params} />}
                                     />
                                 </LocalizationProvider>

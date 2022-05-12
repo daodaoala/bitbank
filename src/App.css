@@ -458,6 +458,10 @@ span {
   line-height: 1.5;
   letter-spacing: 1px;
 }
+.filter {
+  width: 350px;
+  height: auto;
+}
 .paper {
   width: 300px;
   background-color: rgba(242, 242, 242, 0.7);
@@ -579,6 +583,13 @@ span {
   box-shadow: none;
 }
 
+#root .MuiFormControl-root.MuiTextField-root{
+  width: 230px;
+}
+#root .MuiInputBase-root.MuiOutlinedInput-root {
+  border-radius: 10px;
+}
+
 @media screen and (min-width: 500px) {
   .subtitle_2 {
     font-family: 'Noto Sans KR', sans-serif;
@@ -646,6 +657,18 @@ span {
     border-radius: 7px;
     border: 1px solid #BDBDBD;
   }
+  .form_name {
+    font-weight: 500;
+    font-size: 18px;
+    font-family: 'Do Hyeon', sans-serif;
+    color: #2167C2;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-align: left;
+  }
   .btn_1 {
     width: 450px;
     padding: 15px;
@@ -694,6 +717,10 @@ span {
     letter-spacing: 3px;
     cursor: pointer;
   }
+  .filter {
+    width: 450px;
+    height: auto;
+  }
   .paper {
     width: 450px;
     background-color: rgba(242, 242, 242, 0.7);
@@ -726,7 +753,7 @@ span {
     white-space: nowrap;
   }
   #root .MuiFormControl-root.MuiTextField-root{
-    width: 450px;
+    width: 230px;
   }
   #txtField.MuiOutlinedInput-input {
     width: 450px;

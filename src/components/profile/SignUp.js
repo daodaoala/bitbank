@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { API_SERVER } from '../../App';
+import axios from 'axios'
 import clsx from 'clsx'
 import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
@@ -17,7 +19,7 @@ const SignUp = () => {
     const classes = useStyles();
     let [loading, setLoading] = useState(false);   
     const [userInfo, setUserInfo] = useState({
-        memberLoginid: '',
+        memberLoginId: '',
         memberPassword: '',
         memberName: '',
     });
@@ -25,13 +27,15 @@ const SignUp = () => {
     const [idCheck, setIDcheck] = useState(false);
     const [pwCheck, setPWcheck] = useState(false);
 
-    const { memberLoginid, memberPassword, memberName } = userInfo;
+    const { memberLoginId, memberPassword, memberName } = userInfo;
 
     // 유효성 체크
     const isValidName = memberName.length >= 1;
-    const isValidLoginid = memberLoginid.length >= 8;
+    const isValidLoginid = memberLoginId.length >= 8;
     const specialCharacter = memberPassword.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
     const isValidPassword = memberPassword.length >= 6 && specialCharacter >= 1;
+
+    const API_SERVER = "https://gateway.bitbank.click";
 
     const handleChange = (e) => {
         const { value, name } = e.target;
@@ -49,8 +53,24 @@ const SignUp = () => {
             setIDcheck(true);
         } else if ( !isValidPassword ) {
             setPWcheck(true);
+        } else {
+            registerMember(userInfo)
         }
     };
+
+
+    const registerMember = async(userInfo) => {  
+        try {
+            const response = await axios.post( API_SERVER +'/auth/signup', {
+                memberName: userInfo.memberName,
+                memberLoginId: userInfo.memberLoginId,
+                memberPassword: userInfo.memberPassword,
+            })
+            console.log( '회원가입 성공 response', response )
+        } catch (e) {
+            console.log( 'e', e.response );
+        }
+    }
 
     return (
         <div>
@@ -71,7 +91,7 @@ const SignUp = () => {
                         <div className={clsx('between', 'margin_30')}>
                             <div className='form_name'>아이디</div>
                             <div>
-                                <input type="text" placeholder="8자 이상의 아이디를 입력하세요" className='form_txt_1' value={memberLoginid} name="memberLoginid"  onChange={handleChange}/>
+                                <input type="text" placeholder="8자 이상의 아이디를 입력하세요" className='form_txt_1' value={memberLoginId} name="memberLoginId"  onChange={handleChange}/>
                             </div>
                         </div>
                         <div className={clsx('between', 'margin_30')}>

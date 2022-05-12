@@ -18,14 +18,14 @@ const Login = () => {
     const classes = useStyles();
     let [loading, setLoading] = useState(false);   
     const [userInfo, setUserInfo] = useState({
-        memberLoginid: '',
+        memberLoginId: '',
         memberPassword: '',
     });
     const [logintTest, setLoginTest] = useState(false);   // api 붙이기 전 로그인 테스트
     const [idCheck, setIDcheck] = useState(false);
     const [pwCheck, setPWcheck] = useState(false);
 
-    const { memberLoginid, memberPassword } = userInfo;
+    const { memberLoginId, memberPassword } = userInfo;
 
     const handleChange = (e) => {
         const { value, name } = e.target;
@@ -45,7 +45,7 @@ const Login = () => {
         try {
             setLoading(true);
             // const response = await axios.post(API_SERVER + '/auth/signup', {
-            //     memberLoginid: userInfo.memberLoginid,
+            //     memberLoginId: userInfo.memberLoginId,
             //     memberPassword: userInfo.memberPassword,
             // })
             // console.log('response', response)
@@ -82,7 +82,7 @@ const Login = () => {
 
     const handleValid = (e) => {
         e.preventDefault();
-        if (!memberLoginid) {
+        if (!memberLoginId) {
             setIDcheck(true);
         }
         else if (!memberPassword) {
@@ -101,7 +101,7 @@ const Login = () => {
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
                         <div className="item_center">
-                            <input type="text" placeholder="아이디를 입력하세요" className={clsx('margin_20','form_txt_login')} value={memberLoginid} name="memberLoginid" onChange={handleChange} />
+                            <input type="text" placeholder="아이디를 입력하세요" className={clsx('margin_20','form_txt_login')} value={memberLoginId} name="memberLoginId" onChange={handleChange} />
                         </div>
                         <div className="item_center">
                             <input type="password" placeholder="비밀번호를 입력하세요" className={clsx('form_txt_login')} value={memberPassword} name="memberPassword" onChange={handleChange} />
