@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import moment from 'moment';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -253,36 +251,68 @@ const BookSearch = () => {
             </form>
             {searchList===1 && (
                 <div className='books_paper'>
-                <div className={clsx('books_data', 'between')}>  
-                    <div className='info4'>10일 화요일</div>
-                    <div className='info4'>-85.000원</div>
-                </div>
-                <hr/>
-                <div className={clsx('books_data', 'between')}>  
-                    <div className='info5'>김밥나라</div>
-                    <div className='books_price'>-5.000원</div>
-                </div>
-                <div className={clsx('books_data', 'between')}>  
-                    <div className='info5'>LGUPLUS 통신 요금 자동 청구 5월</div>
-                    <div className='books_price'>-60.000원</div>
-                </div>
-                <div className={clsx('books_data', 'between')}>  
-                    <div className='info5'>홈플러스</div>
-                    <div className='books_price'>-5.000원</div>
-                </div>
-                <div className={clsx('books_data', 'between')}>  
-                    <div className='info5'>이마트</div>
-                    <div className='books_price'>-5.000원</div>
-                </div>
-                <div className={clsx('books_data', 'between')}>  
-                    <div className='info5'>신세계 백화점</div>
-                    <div className='books_price'>-5.000원</div>
-                </div>
-                <div className={clsx('books_data', 'between')}>  
-                    <div className='info5'>롯데마트</div>
-                    <div className='books_price'>-5.000원</div>
-                </div>
-            </div>    
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info4'>10일 화요일</div>
+                        <div className='info4'>-85.000원</div>
+                    </div>
+                    <hr/>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>김밥나라</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>LGUPLUS 통신 요금 자동 청구 5월</div>
+                        <div className='books_price'>-60.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>홈플러스</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>이마트</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>신세계 백화점</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>롯데마트</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>홈플러스</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>이마트</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>신세계 백화점</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>롯데마트</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>홈플러스</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>이마트</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>신세계 백화점</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                    <div className={clsx('books_data', 'between')}>  
+                        <div className='info5'>롯데마트</div>
+                        <div className='books_price'>-5.000원</div>
+                    </div>
+                </div>    
             )}
         </div>
     );

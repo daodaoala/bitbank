@@ -234,7 +234,7 @@ span {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 600;
   font-size: 23px;
-  text-align: center;
+  /* text-align: center; */
   color: #424242;
   letter-spacing: 1px;
 }

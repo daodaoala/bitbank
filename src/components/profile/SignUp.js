@@ -5,8 +5,10 @@ import clsx from 'clsx'
 import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { refType } from '@mui/utils';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const SignUp = () => {
-    const classes = useStyles();
+    const cls = useStyles();
     let [loading, setLoading] = useState(false);   
     const [userInfo, setUserInfo] = useState({
         memberLoginId: '',
@@ -26,6 +28,7 @@ const SignUp = () => {
     const [nameCheck, setNameCheck] = useState(false);
     const [idCheck, setIDcheck] = useState(false);
     const [pwCheck, setPWcheck] = useState(false);
+    const [accessCheck, setAccessCheck] = useState(false);
 
     const { memberLoginId, memberPassword, memberName } = userInfo;
 
@@ -45,6 +48,7 @@ const SignUp = () => {
         });
     };
 
+    // 유효성 체크
     const handleValid = (e) => {
         e.preventDefault();
         if ( !isValidName ) {
@@ -59,6 +63,7 @@ const SignUp = () => {
     };
 
 
+    // 회원가입
     const registerMember = async(userInfo) => {  
         try {
             const response = await axios.post( API_SERVER +'/auth/signup', {
@@ -66,11 +71,17 @@ const SignUp = () => {
                 memberLoginId: userInfo.memberLoginId,
                 memberPassword: userInfo.memberPassword,
             })
-            console.log( '회원가입 성공 response', response )
+            console.log( '회원가입 성공 response', response.data, response.data.rt )
+            if( response.status === 200 && response.data.rt === 201 ){   
+                setAccessCheck(true);
+            } else if ( response.status === 200 && response.data.rt === 409 ){   
+                alert(response.data.rtMsg)
+            }
         } catch (e) {
             console.log( 'e', e.response );
         }
     }
+
 
     return (
         <div>
@@ -79,7 +90,7 @@ const SignUp = () => {
                 <div className="subtitle_5">환영합니다!</div>
                 <div className="info2">회원가입을 위해 해당 정보를 기입해주세요.</div>
             </Grid>
-            <form className={classes.root} noValidate autoComplete="off">
+            <form className={cls.root} noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
                         <div className={clsx('between', 'margin_30')}>
@@ -123,7 +134,7 @@ const SignUp = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="popup-footer">
+                            <div className="popup-footer">
                                 <Box className="pop-btn" onClick={()=>setNameCheck(false)}>확인</Box>
                             </div>
                         </div>
@@ -145,7 +156,7 @@ const SignUp = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="popup-footer">
+                            <div className="popup-footer">
                                 <Box className="pop-btn" onClick={()=>setIDcheck(false)}>확인</Box>
                             </div>
                         </div>
@@ -167,15 +178,70 @@ const SignUp = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="popup-footer">
+                            <div className="popup-footer">
                                 <Box className="pop-btn" onClick={()=>setPWcheck(false)}>확인</Box>
                             </div>
                         </div>
                     </div>
                 </div>
             )}
+            {accessCheck && (
+                <div className="container">
+                <div className="popup-wrap" > 
+                    <div className="popup">	
+                        <div className="popup-body">
+                            <div className="body-content">
+                                <div className="body-titlebox">
+                                    <CheckCircleOutlineIcon style={{fontSize: '47px'}}/>
+                                </div>
+                                <div className="body-contentbox">
+                                    회원가입이 완료되었습니다
+                                </div>
+                            </div>
+                        </div>
+                        <div className="popup-footer">
+                            <Link to='/login'>
+                                <Box className="pop-btn">확인</Box>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            )}
         </div>
     );
 }
 
 export default SignUp;
+
+
+
+
+
+// function openModal(notice) {
+//     return (
+//         <div>
+//             <div className="container">
+//                 <div className="popup-wrap" > 
+//                     <div className="popup">	
+//                         <div className="popup-body">
+//                             <div className="body-content">
+//                                 <div className="body-titlebox">
+//                                     <ErrorOutlineIcon style={{fontSize: '47px'}}/>
+//                                 </div>
+//                                 <div className="body-contentbox">
+//                                    {notice}
+//                                 </div>
+//                             </div>
+//                         </div>
+//                         <div class="popup-footer">
+//                             <Link to='/login'>
+//                                 <Box className="pop-btn">확인</Box>
+//                             </Link>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }

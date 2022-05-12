@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@mui/styles';
-import clsx from 'clsx'
 import { Link } from 'react-router-dom';
+import clsx from 'clsx'
+import axios from 'axios';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -26,6 +27,7 @@ const Login = () => {
     const [pwCheck, setPWcheck] = useState(false);
 
     const { memberLoginId, memberPassword } = userInfo;
+    const API_SERVER = "https://gateway.bitbank.click";
 
     const handleChange = (e) => {
         const { value, name } = e.target;
@@ -44,26 +46,26 @@ const Login = () => {
     const getLogin = async ( userInfo ) => {
         try {
             setLoading(true);
-            // const response = await axios.post(API_SERVER + '/auth/signup', {
-            //     memberLoginId: userInfo.memberLoginId,
-            //     memberPassword: userInfo.memberPassword,
-            // })
-            // console.log('response', response)
-            // if (response.status === 200 && response.data.access_token != null && response.data.user != null) {
-            //     console.log("유저", JSON.stringify(response.data));
-            //     // updateUserInfo(dispatch, response.data.access_token, response.data.user)
+            const response = await axios.post(API_SERVER + '/auth/login', {
+                memberLoginId: userInfo.memberLoginId,
+                memberPassword: userInfo.memberPassword,
+            })
+            console.log('로그인 response', response)
+            if (response.status === 200 && response.data.rt) {
+                console.log("유저", JSON.stringify(response.data));
+                // // updateUserInfo(dispatch, response.data.access_token, response.data.user)
 
-            //     Swal.fire({
-            //         text: "로그인 되었습니다.",
-            //         icon: "success",
-            //         showConfirmButton: false,
-            //         timer: 1200,
-            //     }).then(() => {
-            //         if (location.state && location.state.referer) document.location.href = location.state.referer
-            //         else document.location.href = '/'
-            //     });
+                // Swal.fire({
+                //     text: "로그인 되었습니다.",
+                //     icon: "success",
+                //     showConfirmButton: false,
+                //     timer: 1200,
+                // }).then(() => {
+                //     if (location.state && location.state.referer) document.location.href = location.state.referer
+                //     else document.location.href = '/'
+                // });
 
-            // }
+            }
             setLoginTest(true);
         } catch (error) {
             console.log('error', error)
@@ -84,11 +86,11 @@ const Login = () => {
         e.preventDefault();
         if (!memberLoginId) {
             setIDcheck(true);
-        }
-        else if (!memberPassword) {
+        } else if (!memberPassword) {
             setPWcheck(true);
+        } else {
+            getLogin(userInfo);
         }
-        else getLogin(userInfo);
     }
 
     return (
