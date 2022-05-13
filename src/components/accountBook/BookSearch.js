@@ -38,11 +38,11 @@ const BookSearch = () => {
     const [searchEndDate , setSearchEndDate] = useState(new Date());        // 종료 날짜
     const [keywords, setKeywords] = useState(                               // 검색어
         JSON.parse(localStorage.getItem('keywords') || '[]'),
-    )
+      )
 
     useEffect(() => {
         localStorage.setItem('keywords', JSON.stringify(keywords))
-    }, [])
+    }, [keywords])
 
 
     //검색어 추가

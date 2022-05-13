@@ -306,6 +306,14 @@ span {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+.info6 {
+  font-family: 'JalpullineunharuM';
+  font-weight: 500;
+  font-size: 13px;
+  color: #b4afaf;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
 .btn_1 {
   width: 300px;
   padding: 15px;
@@ -636,8 +644,11 @@ span {
   box-shadow: none;
 }
 
-#root .MuiFormControl-root.MuiTextField-root{
+/* #root .MuiFormControl-root.MuiTextField-root{
   width: 230px;
+} */
+#txtField .MuiFormControl-root.MuiTextField-root{
+  width: 300px;
 }
 #root .MuiInputBase-root.MuiOutlinedInput-root {
   border-radius: 10px;
@@ -819,9 +830,9 @@ span {
     width: 350px;
     height: 300px;
   }
-  #root .MuiFormControl-root.MuiTextField-root{
+  /* #root .MuiFormControl-root.MuiTextField-root{
     width: 230px;
-  }
+  } */
   #txtField.MuiOutlinedInput-input {
     width: 450px;
     height: 500px;

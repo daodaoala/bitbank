@@ -6,7 +6,7 @@ import axios from 'axios';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-
+import logo from './../img/logo.png'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -96,7 +96,7 @@ const Login = () => {
     return (
         <div>
             <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                <img src="./img/logo.png" width="23px" height="35px" style={{margin:"28px 0", paddingLeft:"30px"}}/>
+                <img src={logo} alt="B" width="23px" height="35px" style={{margin:"28px 0", paddingLeft:"30px"}}/>
                 <div className='logo_subtitle'>ITBANK</div>
             </Grid>
             <form className={classes.root} noValidate autoComplete="off">

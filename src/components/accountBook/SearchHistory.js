@@ -8,7 +8,7 @@ function History({ keywords, onRemoveKeyword, onClearKeywords }) {
     console.log('keyword', keywords)
 
     if (keywords.length === 0) {
-        return <div className={clsx('center', 'info3')}>최근 검색된 기록이 없습니다.</div>
+        return <div className={clsx('center', 'info4')}>최근 검색된 기록이 없습니다.</div>
     }
 
 
@@ -24,7 +24,7 @@ function History({ keywords, onRemoveKeyword, onClearKeywords }) {
                   return (
                       <div key={id} className={clsx('info3', 'between', 'search_btn')}>
                           <Box>{keyword}</Box>
-                          <CloseIcon style={{ color:"#FFFFFF", fontSize:"18px", cursor:"pointer" }}  onClick={() => {onRemoveKeyword(id)}}>삭제</CloseIcon>
+                          <CloseIcon style={{ color:"#FFFFFF", fontSize:"18px", cursor:"pointer" }}  onClick={() => onRemoveKeyword(id)}>삭제</CloseIcon>
                       </div>
                   )
               })}

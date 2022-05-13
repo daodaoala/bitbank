@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { API_SERVER } from '../../App';
 import axios from 'axios'
 import clsx from 'clsx'
 import { makeStyles } from '@mui/styles';
@@ -8,7 +7,6 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { refType } from '@mui/utils';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -213,35 +211,3 @@ const SignUp = () => {
 }
 
 export default SignUp;
-
-
-
-
-
-// function openModal(notice) {
-//     return (
-//         <div>
-//             <div className="container">
-//                 <div className="popup-wrap" > 
-//                     <div className="popup">	
-//                         <div className="popup-body">
-//                             <div className="body-content">
-//                                 <div className="body-titlebox">
-//                                     <ErrorOutlineIcon style={{fontSize: '47px'}}/>
-//                                 </div>
-//                                 <div className="body-contentbox">
-//                                    {notice}
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <div class="popup-footer">
-//                             <Link to='/login'>
-//                                 <Box className="pop-btn">확인</Box>
-//                             </Link>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
