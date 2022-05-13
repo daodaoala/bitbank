@@ -28,12 +28,12 @@ const ExpenditureStatistics = () => {
     const [lineData, setLineData] = useState({
         options : {
             series: [{
-            name: 'Sales',
-            data: [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5]
+                name: 'Sales',
+                data: [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5]
             }],
             chart: {
-            height: 350,
-            type: 'line',
+                height: 400,
+                type: 'line',
             },
             forecastDataPoints: {
                 count: 7
@@ -75,7 +75,19 @@ const ExpenditureStatistics = () => {
             yaxis: {
                 min: -10,
                 max: 40
-            }
+            },
+            responsive: [{
+                breakpoint: 500,
+                options: {
+                    width: 450,
+                    height: 400
+                },
+                breakpoint: 400,
+                options: {
+                    width: 320,
+                    height: 300
+                },
+            }]
         }
     })
 
@@ -87,8 +99,8 @@ const ExpenditureStatistics = () => {
           id: 1
         },
         {
-          quantity: 20,
-          percentage: 20,
+          quantity: 30,
+          percentage: 40,
           name: "Ember",
           id: 2
         },
@@ -148,13 +160,13 @@ const ExpenditureStatistics = () => {
                         </div>
                     </div>    
 
-                    <div className='books_paper'>
-                        <div className='info4'>통계</div>
+                    <div className='statistic_paper'>
+                        <div className={clsx('subtitle_7', 'margin_30')}>통계</div>
                         <div className={clsx('item_center')}>
                             <Donut
                                 data={with4Slices}
                                 externalRadius={150}
-                                internalRadius={47}
+                                internalRadius={60}
                                 highlightSliceById={1}   //해당 슬라이드 id 강조
                                 hasHoverAnimation={true}
                                 isAnimated={true}
@@ -162,16 +174,17 @@ const ExpenditureStatistics = () => {
                         </div>
                     </div>     
 
-                    <div className='books_paper'>
-                        <div className='info4'>일별 추이</div>
+                    <div className='statistic_paper'>
+                        <div className={clsx('subtitle_7', 'margin_30')}>일별 추이</div>
                         <div className={clsx('item_center')}>
-                        <ApexChart
-                            type="line"
-                            options={lineData.options}
-                            series={lineData.options.series}
-                            width={500}
-                            height={300}
-                        />
+                            <ApexChart
+                                type="line"
+                                options={lineData.options}
+                                series={lineData.options.series}
+                                width={350}
+                                height={300}
+                                id= "lineChart"
+                            />
                         </div>
                     </div>        
                 </Grid>
