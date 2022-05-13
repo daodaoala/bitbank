@@ -1,22 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios'
 import clsx from 'clsx'
-import { makeStyles } from '@mui/styles';
-import { Link } from 'react-router-dom';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: "flex",
-    },
-}));
-
+import Loader from "./../common/Loader"
 
 const SignUp = () => {
-    const cls = useStyles();
     let [loading, setLoading] = useState(false);   
     const [userInfo, setUserInfo] = useState({
         memberLoginId: '',
@@ -63,6 +55,7 @@ const SignUp = () => {
 
     // 회원가입
     const registerMember = async(userInfo) => {  
+        setLoading(true);
         try {
             const response = await axios.post( API_SERVER +'/auth/signup', {
                 memberName: userInfo.memberName,
@@ -78,17 +71,17 @@ const SignUp = () => {
         } catch (e) {
             console.log( 'e', e.response );
         }
+        // setLoading(false)
     }
 
 
     return (
         <div>
-            {/* <Loader loading={loading} /> */}
             <Grid item xs={12} style={{ margin: '30px 0' }}>
                 <div className="subtitle_5">환영합니다!</div>
                 <div className="info2">회원가입을 위해 해당 정보를 기입해주세요.</div>
             </Grid>
-            <form className={cls.root} noValidate autoComplete="off">
+            <form className="flex" noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
                         <div className={clsx('between', 'margin_30')}>
@@ -115,7 +108,10 @@ const SignUp = () => {
                         <button className={clsx('btn_1', 'margin_30')} onClick={handleValid}>
                             완료
                         </button>
-                    </Grid>
+                    </Grid>          
+                    <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                          <Loader loading={loading} />
+                    </Grid>  
                 </Grid>
             </form>
             {nameCheck && (

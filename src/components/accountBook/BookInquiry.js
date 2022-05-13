@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import { Link, useHistory } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -7,22 +6,10 @@ import Grid from '@mui/material/Grid';
 import OutputIcon from '@mui/icons-material/Output';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
+import Loader from "./../common/Loader"
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        fontFamily: "IBM Plex Sans KR",
-        display: "flex",
-    },
-}));
-
-const style = {
-    width: '100%',
-    maxWidth: 320,
-    bgcolor: 'rgba(242, 242, 242, 0.7)',
-};
 
 const BookInquiry = () => {
-    const classes = useStyles();
     let [loading, setLoading] = useState(false);   
     let now = new Date();                           //현재 날짜 및 시간
     let todayMonth = now.getMonth() + 1;            //월 구하기
@@ -60,6 +47,7 @@ const BookInquiry = () => {
             </div>
             <Grid container>
                 <Grid item xs={12} style={{ justifyContent: 'center', marginTop: '20px' }}>
+                    <Loader loading={loading} />
                     <Link to='/books/addbook'>
                         <Box className={clsx('pointer','item_right')}>
                             <AddIcon style={{ color:"#676767", fontSize: "25px" }}/>

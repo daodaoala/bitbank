@@ -2,28 +2,20 @@ import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import { Link, useHistory } from 'react-router-dom';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        fontFamily: "IBM Plex Sans KR",
-        display: "flex",
-    },
-}));
+import Loader from "./../common/Loader"
 
 
 const CardRecommendation = () => {
-    const classes = useStyles();
     let [loading, setLoading] = useState(false);   
 
     return (
         <div>
-            {/* <Loader loading={loading} /> */}
             <div className={clsx('item_center','subtitle_2')}>나에게 가장 좋은 카드는?</div>
             <div className="subtitle_3">입력하신 소비 패턴에 맞게<br/>많은 혜택을 받을 수 있는 카드를 찾았어요!</div>
             <Grid container>
                 <Grid item xs={12} style={{ justifyContent: 'center', marginTop: '30px' }}>
+                    {/* <Loader loading={loading} /> */}
                     <div className='paper'>
                         <div className='card_company'>삼성카드</div>
                         <div className='card_name'>1. 삼성카드 taptap O</div>

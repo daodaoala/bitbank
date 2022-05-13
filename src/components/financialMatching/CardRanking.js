@@ -3,15 +3,8 @@ import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import axios from 'axios';
 import Grid from '@mui/material/Grid';
-import { css } from "@emotion/react";
-import HashLoader from "react-spinners/HashLoader";
+import Loader from "./../common/Loader"
 
-
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: "4A90E2";
-`;
 
 const CardRanking = () => {
     let [loading, setLoading] = useState(false);   
@@ -74,7 +67,7 @@ const CardRanking = () => {
             <div className={clsx('item_center','subtitle_3')}>카드사의 대표적인<br/>1위부터 10위 카드를 소개합니다!</div>
             <Grid container>
                 <Grid item xs={12} style={{ justifyContent: 'center', marginTop: '30px' }}>
-                    <HashLoader color="#4A90E2" loading={loading} css={override} size={70}  />
+                    <Loader loading={loading} />
                     {cardList && cardList.map((data, i) => (
                         <div className='paper'>
                             <div className='card_company'>{data.cardCompany}</div>

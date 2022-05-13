@@ -1,20 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { makeStyles } from '@mui/styles';
-import clsx from 'clsx';
 import { Link, useHistory } from 'react-router-dom';
-import Box from '@mui/material/Box';
+import clsx from 'clsx';
 import Grid from '@mui/material/Grid';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: "flex",
-    },
-}));
+import Loader from "./../common/Loader"
 
 
 const Poll = () => {
-    const classes = useStyles();
-    let history = useHistory();
     let [loading, setLoading] = useState(false);   
     const [userInfo, setUserInfo] = useState({
         memberLoginId: '',
@@ -48,13 +39,13 @@ const Poll = () => {
 
     return (
         <div>
-            {/* <Loader loading={loading} /> */}
             <div className={clsx('item_center','subtitle_2')}>나에게 가장 좋은 카드는?</div>
             <div className="subtitle_3">소비패턴을 더 정확하게 입력할수록, <br/>최고의 카드를 찾을 확률이 높아집니다!</div>
             <div className="info">(※숫자만 입력하세요.※)</div>
-            <form className={classes.root} noValidate autoComplete="off">
+            <form className='flex' noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
+                        {/* <Loader loading={loading} /> */}
                         <div className={clsx('between', 'margin_20')}>
                             <div className='form_name'>월 평균 사용금액</div>
                             <div>

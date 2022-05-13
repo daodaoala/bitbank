@@ -1,21 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx'
-import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Grid from '@mui/material/Grid';
+import Loader from "./../common/Loader"
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: "flex",
-        margin: "30px 0"
-    },
-}));
 
 
 const MyPage = () => {
-    const classes = useStyles();
     let [loading, setLoading] = useState(false);   
     const [userInfo, setUserInfo] = useState({
         memberPassword: 'abcdefg1!',
@@ -64,7 +57,7 @@ const MyPage = () => {
                     회원정보는 개인정보처리방침에 따라 안전하게 보호되며, 회원님의 명백한 동의 없이 공개 또는 제 3자에게 제공되지 않습니다. 
                 </div>
             <hr/>
-            <form className={classes.root} noValidate autoComplete="off">
+            <form className={clsx("flex","margin_30")} noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
                         <div className={clsx('between', 'margin_30')}>
@@ -105,6 +98,9 @@ const MyPage = () => {
                             </>
                         )}
                     </Grid>
+                    <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                          <Loader loading={loading} />
+                    </Grid> 
                 </Grid>
             </form>
             {nameCheck && (

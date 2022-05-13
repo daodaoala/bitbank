@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx'
 import axios from 'axios';
@@ -7,16 +6,9 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import logo from './../img/logo.png'
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: "flex",
-    },
-}));
-
+import Loader from "./../common/Loader"
 
 const Login = () => {
-    const classes = useStyles();
     let [loading, setLoading] = useState(false);   
     const [userInfo, setUserInfo] = useState({
         memberLoginId: '',
@@ -44,8 +36,8 @@ const Login = () => {
     }
 
     const getLogin = async ( userInfo ) => {
+        setLoading(true);
         try {
-            setLoading(true);
             const response = await axios.post(API_SERVER + '/auth/login', {
                 memberLoginId: userInfo.memberLoginId,
                 memberPassword: userInfo.memberPassword,
@@ -99,7 +91,7 @@ const Login = () => {
                 <img src={logo} alt="B" width="23px" height="35px" style={{margin:"28px 0", paddingLeft:"30px"}}/>
                 <div className='logo_subtitle'>ITBANK</div>
             </Grid>
-            <form className={classes.root} noValidate autoComplete="off">
+            <form className="flex" noValidate autoComplete="off">
                 <Grid container>
                     <Grid item xs={12} style={{ justifyContent: 'center' }}>
                         <div className="item_center">
@@ -120,6 +112,11 @@ const Login = () => {
                                 회원가입
                             </button>
                         </Link>
+                    </Grid>             
+                    <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                        <div className='margin_40_10'>
+                            <Loader loading={loading} />
+                        </div>
                     </Grid>
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
                         {/* <button className='signup_btn' onClick={handleClick}>

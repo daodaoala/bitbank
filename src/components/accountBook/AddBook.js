@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import moment from 'moment';
 import Grid from '@mui/material/Grid';
@@ -13,6 +12,7 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { expenditureOptions, incomeOptions, transferOptions } from './categoryData';
+import Loader from "./../common/Loader"
 
 const defaultMenuProps = {
     PaperProps: {
@@ -26,6 +26,7 @@ const defaultMenuProps = {
 };
 
 const AddBook = () => {
+    const [loading, setLoading] = useState(false);
     const [price, setPrice] = useState(0);                                  // 가계부 금액
     const [accountBookType, setAccountBookType] = useState(0);              // 가계부 내역 유형
     const [expenditureType, setExpenditureType] = useState(["0"]);          // 지출 유형
@@ -73,7 +74,6 @@ const AddBook = () => {
 
     return (
         <div>
-            {/* <Loader loading={loading} /> */}
             <div className={clsx('item_center','subtitle_2')}>가계부를 추가해보세요.</div>
             <div className="info">(※금액 입력 시 숫자만 입력하세요.※)</div>
             <form className={clsx('item_center')} noValidate autoComplete="off">
@@ -180,6 +180,9 @@ const AddBook = () => {
                             </button>
                         </Link>
                     </Grid>
+                    <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                          <Loader loading={loading} />
+                    </Grid>  
                 </Grid>
             </form>
         </div>
