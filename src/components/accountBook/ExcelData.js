@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Grid from '@mui/material/Grid';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Box from '@mui/material/Box';
-import transmit from './transmit.png'
+import transmit from './../img/transmit.png'
 
 const useStyles = makeStyles((theme) => ({
     root: {

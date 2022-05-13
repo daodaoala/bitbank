@@ -16,6 +16,7 @@ import TableBody from '@mui/material/TableBody';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import CloseIcon from '@mui/icons-material/Close';
+import logo from './../img/logo.png'
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -67,7 +68,7 @@ const MenuHeader = () => {
                             <ArrowBackIosIcon style={{margin: '10px 0', color: '#6E6E6E'}} onClick={goBack}/>
                         </div>
                         <Box display="flex">
-                            <img src="./img/logo.png" width="17px" height="25px" style={{margin:"10px 20px"}}/>
+                            <img src={logo} alt="B" width="17px" height="25px" style={{margin:"10px 20px"}}/>
                             <div className='logo' onClick={() => window.location.replace("/")}>ITBANK</div>
                         </Box>
                         <Link to='/login'>
