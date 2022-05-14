@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import { Link, useHistory  } from 'react-router-dom';
+import { observer, useObserver } from 'mobx-react';
+import axios from 'axios';
 import clsx from 'clsx';
 import AppBar from "@mui/material/AppBar";
 import Badge from '@mui/material/Badge';
@@ -17,6 +19,9 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import CloseIcon from '@mui/icons-material/Close';
 import logo from './../img/logo.png'
+import {store} from './../stores/Store';
+// import useStore from './../../useStore';
+
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -53,13 +58,67 @@ const MenuHeader = () => {
     let history = useHistory();
     const [menu, setMenu] = useState(4); 
     const [showNoti, setShowNoti] = useState(false)
+    const [alarmCount, setAlarmCount] = useState(0);
+    const [alarmList, setAlarmList] = useState([]);
+    const API_SERVER = "https://member.bitbank.click" ;
 
+    useEffect(() => {
+        if( store.accessToken != null ) {
+            getAlarmCount(store.accessToken, store.memberId);
+            console.log("Store 확인",store.accessToken, store.memberId, store)
+        }
+    },[store])
+
+    const getAlarmCount = async(token, id) => {
+        try {
+                const response = await axios.get( API_SERVER +'/member/alarm-count',
+                {
+                    params: {
+                        memberId : id,
+                    }
+                },
+                {
+                    headers: { 
+                        Authorization : token
+                    },
+                });
+                console.log( '알람 갯수 조회', response.data, response.data.alarmCount  )
+                if( response.status === 200 && response.data.rt === 200 ){   
+                    setAlarmCount(response.data.alarmCount)
+                }    
+        } catch (e) {
+            console.log( 'e', e.response );
+        }
+    }
+
+    const getAlarmList = async(token, id) => {
+        try {
+                const response = await axios.get( API_SERVER +'/member/alarm-list',
+                {
+                    params: {
+                        memberId : id,
+                    }
+                },
+                {
+                    headers: { 
+                        Authorization : token
+                    },
+                });
+                console.log( '알람 갯수 조회', response.data, response.data.alarmCount  )
+                if( response.status === 200 && response.data.rt === 200 ){   
+                    setShowNoti(true)
+                    setAlarmList(response.data.alarmMessageList)
+                }    
+        } catch (e) {
+            console.log( 'e', e.response );
+        }
+    }
 
     const goBack = (e) => {
         history.goBack();
     };
 
-    return (
+    return useObserver(() => (
         <>
             <AppBar className={cls.appBar}>
                 <Container maxWidth="sm" style={{padding:"0px"}}>
@@ -71,58 +130,61 @@ const MenuHeader = () => {
                             <img src={logo} alt="B" width="17px" height="25px" style={{margin:"10px 20px"}}/>
                             <div className='logo' onClick={() => window.location.replace("/")}>ITBANK</div>
                         </Box>
-                        <Link to='/login'>
-                            <Box onClick={()=>setMenu(4)}>
-                                <button className="loginBtn">로그인</button>
-                            </Box>
-                        </Link>
 
-                        {/* <div style={{width:"35px", marginTop:"-10px"}}>
-                            <Badge badgeContent={99} color="primary">
-                                <NotificationsIcon style={{color:"#848484", fontSize:"30px"}} onClick={(e) => setShowNoti(true)}/>
-                            </Badge>
-                            <Menu
-                                id="simple-menu1"
-                                className={cls.popup}
-                                anchorEl={showNoti}
-                                open={showNoti}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'center',
-                                }}
-                                keepMounted
-                                style={{ top: '-70px' }}
-                                onClick={() => setShowNoti(false)}
-                            >
-                                <div style={{ width: '475px', height: '416px' }}></div>
-                                <Container
-                                    style={{ position: 'absolute', top: '32px', left: '0', height: '400px' }}
+                        { !store.accessToken ? ( 
+                            <Link to='/login'>
+                                <Box onClick={()=>setMenu(4)}>
+                                    <button className="loginBtn">로그인</button>
+                                </Box>
+                            </Link>
+                         ):(
+                            <div style={{width:"35px", marginTop:"-10px"}}>
+                                <Badge badgeContent={alarmCount} color="primary">
+                                    <NotificationsIcon style={{color:"#848484", fontSize:"30px"}} onClick={(e) => getAlarmList(store.accessToken, store.memberId)}/>
+                                </Badge>
+                                <Menu
+                                    id="simple-menu1"
+                                    className={cls.popup}
+                                    anchorEl={showNoti}
+                                    open={showNoti}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'center',
+                                    }}
+                                    keepMounted
+                                    style={{ top: '-70px' }}
+                                    onClick={() => setShowNoti(false)}
                                 >
-                                    <Box display="flex" justifyContent="space-between">
-                                        <Box color="primary" style={{ fontWeight: "bold", fontSize: "1rem" }}>
-                                            알림을 확인하세요.
+                                    <div style={{ width: '475px', height: '416px' }}></div>
+                                    <Container
+                                        style={{ position: 'absolute', top: '32px', left: '0', height: '400px' }}
+                                    >
+                                        <Box display="flex" justifyContent="space-between">
+                                            <Box color="primary" style={{ fontWeight: "bold", fontSize: "1rem" }}>
+                                                알림을 확인하세요.
+                                            </Box>
+                                            <Box>
+                                                <CloseIcon onClick={(e) => { setShowNoti(false); e.stopPropagation(); }} className="pointer"></CloseIcon>
+                                            </Box>
                                         </Box>
-                                        <Box>
-                                            <CloseIcon onClick={(e) => { setShowNoti(false); e.stopPropagation(); }} className="pointer"></CloseIcon>
-                                        </Box>
-                                    </Box>
-                                    <TableContainer>
-                                        <Table className={cls.table} aria-label="simple table">
-                                            <TableHead className={cls.MuiTableHead}>
-                                                <TableRow>
-                                                    <TableCell>ooo</TableCell>
-                                                    <TableCell>ooo</TableCell>
-                                                    <TableCell>ooo</TableCell>
-                                                    <TableCell>ooo</TableCell>
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody className={cls.MuiTableBody}>
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
-                                </Container>
-                            </Menu>
-                        </div> */}
+                                        <TableContainer>
+                                            <Table className={cls.table} aria-label="simple table">
+                                                <TableHead className={cls.MuiTableHead}>
+                                                    <TableRow>
+                                                        <TableCell>ooo</TableCell>
+                                                        <TableCell>ooo</TableCell>
+                                                        <TableCell>ooo</TableCell>
+                                                        <TableCell>ooo</TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody className={cls.MuiTableBody}>
+                                                </TableBody>
+                                            </Table>
+                                        </TableContainer>
+                                    </Container>
+                                </Menu>
+                            </div> 
+                        )} 
                     </div>
                 </Container>
             </AppBar>
@@ -142,7 +204,7 @@ const MenuHeader = () => {
                 </Container>
             </AppBar>
         </>
-    );
+    ));
 }
 
 export default MenuHeader;

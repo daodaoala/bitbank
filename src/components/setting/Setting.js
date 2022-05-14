@@ -1,25 +1,76 @@
 import React, { useState, useEffect, useRef } from 'react';
-import clsx from 'clsx'
-import { makeStyles } from '@mui/styles';
 import { Link, useHistory } from 'react-router-dom';
+import { observer, useObserver } from 'mobx-react';
+import clsx from 'clsx'
+import axios from 'axios';
 import Grid from '@mui/material/Grid';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
-
-const useStyles = makeStyles((theme) => ({
-}));
+import { store } from './../stores/Store';
 
 
 const Setting = () => {
-    const classes = useStyles();
-    let history = useHistory();
     let [loading, setLoading] = useState(false);  
     const [open, setOpen] = useState(false);  
+    const API_SERVER = "https://member.bitbank.click" ;
 
     const handleOpenModal = () =>{
         setOpen(!open);
     }
 
-    return (
+    const getLogOut = async(e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(API_SERVER + '/member/logout', {
+                memberId : store.memberId
+            },
+            {
+                headers: { 
+                    Authorization : store.accessToken
+                },
+            })
+            console.log('로그아웃 response', response)
+            if (response.status === 200 && response.data.rt === 200) {
+                sessionStorage.removeItem('access_token');
+                sessionStorage.removeItem('memberName');
+                sessionStorage.removeItem('memberType');
+                sessionStorage.removeItem('memberId');
+                store.logOut();
+                document.location.href = '/'
+            }
+        } catch (error) {
+            console.log('error', error)
+        } 
+        setLoading(false);
+    }
+
+    //회원 탈퇴 진행
+    const getResigned = async(e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.delete(API_SERVER + '/member/delete', {
+                data:{
+                    memberId : store.memberId
+                },
+            },
+            {
+                headers: { 
+                    Authorization : store.accessToken
+                },
+            })
+            if (response.status === 200 && response.data.rt === 200) {
+                sessionStorage.removeItem('access_token');
+                sessionStorage.removeItem('memberName');
+                sessionStorage.removeItem('memberType');
+                sessionStorage.removeItem('memberId');
+                store.logOut();
+                document.location.href = '/'
+            }
+        }catch (error) {
+            console.log('error',error.response)
+        } 
+    }
+
+    return useObserver(() =>(
         <div>
             <Grid container style={{marginTop:"70px"}}>
                 <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
@@ -30,7 +81,7 @@ const Setting = () => {
                     </Link>
                 </Grid>
                 <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                    <button className={clsx('btn_1', 'margin_40')}>
+                    <button className={clsx('btn_1', 'margin_40')} onClick={getLogOut}>
                         로그아웃
                     </button>
                 </Grid>
@@ -61,8 +112,8 @@ const Setting = () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="popup-footer">
-                            <div className="pop-btn">탈퇴하기</div>
+                        <div className="popup-footer">
+                            <div className="pop-btn" onClick={getResigned}>탈퇴하기</div>
                             <div className="line"></div>
                             <div className="pop-btn" onClick={handleOpenModal}>취소</div>
                         </div>
@@ -71,7 +122,7 @@ const Setting = () => {
             </div>
             )}
         </div>
-    );
+    ));
 }
 
 export default Setting;

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { observer, useObserver  } from 'mobx-react';
+import { observable } from 'mobx'
 import clsx from 'clsx'
 import axios from 'axios';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
@@ -7,8 +9,12 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import logo from './../img/logo.png'
 import Loader from "./../common/Loader"
+import {store}  from './../stores/Store';
+import { PatternSharp } from '@mui/icons-material';
+
 
 const Login = () => {
+    const history = useHistory();
     let [loading, setLoading] = useState(false);   
     const [userInfo, setUserInfo] = useState({
         memberLoginId: '',
@@ -19,7 +25,7 @@ const Login = () => {
     const [pwCheck, setPWcheck] = useState(false);
 
     const { memberLoginId, memberPassword } = userInfo;
-    const API_SERVER = "https://gateway.bitbank.click";
+    const API_SERVER = "https://gateway.bitbank.click" ;
 
     const handleChange = (e) => {
         const { value, name } = e.target;
@@ -35,6 +41,10 @@ const Login = () => {
         }
     }
 
+    // const setUserInfo = (data) =>{
+    //     store.setUserInfo(data);
+    // }
+
     const getLogin = async ( userInfo ) => {
         setLoading(true);
         try {
@@ -43,9 +53,23 @@ const Login = () => {
                 memberPassword: userInfo.memberPassword,
             })
             console.log('로그인 response', response)
-            if (response.status === 200 && response.data.rt) {
-                console.log("유저", JSON.stringify(response.data));
-                // // updateUserInfo(dispatch, response.data.access_token, response.data.user)
+            if (response.status === 200 && response.data.rt === 200) {
+                console.log("유저", response.data);
+                store.setUserInfo(response.data);
+                console.log("Store",store.accessToken, store.memberId,store)
+                sessionStorage.setItem('access_token', response.data.accessToken);
+                sessionStorage.setItem('refresh_token', response.data.refreshToken);
+                sessionStorage.setItem('memberName', response.data.memberName);
+                sessionStorage.setItem('memberType', response.data.memberType);
+                sessionStorage.setItem('memberId',  response.data.memberId);
+                document.location.href = '/'
+                // store.setUserInfo({
+                //     memberName : response.data.memberName,
+                //     memeberType : response.data.memberType,
+                //     accessToken : response.data.accessToken,
+                //     refreshToken : response.data.refreshToken,
+                //     memberId : response.data.memberId,
+                // });
 
                 // Swal.fire({
                 //     text: "로그인 되었습니다.",
@@ -85,7 +109,7 @@ const Login = () => {
         }
     }
 
-    return (
+    return useObserver(() => (
         <div>
             <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
                 <img src={logo} alt="B" width="23px" height="35px" style={{margin:"28px 0", paddingLeft:"30px"}}/>
@@ -168,7 +192,7 @@ const Login = () => {
                 </div>
             )}
         </div>
-    );
+    ));
 }
 
 export default Login;
