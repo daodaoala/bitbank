@@ -1,29 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@mui/styles';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
 
-const useStyles = makeStyles((theme) => ({
-    root:{
-    
-    }
-}));
-
 const Home = () => {
-    const classes = useStyles();
 
-    
 
     return (
         <>
             <Container maxWidth="sm">
-                <Box className={classes.section_intro2} display="flex" justifyContent="center" alignItems="top">
+                <Box display="flex" justifyContent="center" alignItems="top">
                     <Box>
-                        <Box className={classes.title}>
+                        <Box >
                             내 손안의 목돈마련 BITBANK
                         </Box>
-                        <Box className={classes.title2}>
+                        <Box>
                             체계적인 예산, 통게 기능으로 쉽고 정확하게 분석합니다.
                         </Box>
                         {/* <Box display="flex" justifyContent="center">

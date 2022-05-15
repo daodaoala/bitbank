@@ -9,19 +9,12 @@ import Badge from '@mui/material/Badge';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Menu from '@mui/material/Menu';
-import TableContainer from '@mui/material/TableContainer';
-import Table from '@mui/material/Table';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import TableCell from '@mui/material/TableCell';
-import TableBody from '@mui/material/TableBody';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import CloseIcon from '@mui/icons-material/Close';
 import PaidIcon from '@mui/icons-material/Paid';
 import logo from './../img/logo.png'
 import {store} from './../stores/Store';
-// import useStore from './../../useStore';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -108,7 +101,7 @@ const MenuHeader = () => {
                 if( response.status === 200 && response.data.rt === 200 ){   
                     setShowNoti(true)
                     setAlarmList(response.data.alarmDTOList)
-                    setAlarmCount(0)
+                    // setAlarmCount(0)
                 }    
         } catch (e) {
             console.log( 'e', e.response );
@@ -169,7 +162,7 @@ const MenuHeader = () => {
                                             </Box>
                                         </Box>
                                         {alarmList && alarmList.map((data, i) => (
-                                            <div className={clsx('margin_20','flex')}>
+                                            <div className={clsx('margin_20','flex')} key={data.id}>
                                                 <div>
                                                     <PaidIcon style={{ color:'#2167C2', fontSize: '35px'}}/>
                                                 </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@400;500;700&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@500;700&display=swap');
 @font-face {
   font-family: "JalpullineunharuM";
   src: url("./font/JalpullineunharuM.ttf");
@@ -487,6 +487,7 @@ span {
   padding: 16.5px 14px;
   border-radius: 7px;
   border: 1px solid #BDBDBD;
+  text-align: right;
 }
 .form_txt_1 {
   width: 209px;
@@ -585,7 +586,7 @@ span {
   overflow: hidden;         
   background-color:#6E6E6E; 
   box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'JalpullineunharuM';
   font-weight: 400; 
   font-stretch: normal;
   font-style: normal;
@@ -746,6 +747,7 @@ span {
     padding: 16.5px 14px;
     border-radius: 7px;
     border: 1px solid #BDBDBD;
+    text-align: right;
   }
   .form_name {
     font-weight: 500;

@@ -69,7 +69,7 @@ const CardRanking = () => {
                 <Grid item xs={12} style={{ justifyContent: 'center', marginTop: '30px' }}>
                     <Loader loading={loading} />
                     {cardList && cardList.map((data, i) => (
-                        <div className='paper'>
+                        <div className='paper' key={data.cardId}>
                             <div className='card_company'>{data.cardCompany}</div>
                             <div className='card_name'>{data.cardRanking}&nbsp; {data.cardName}</div>
                             <img src={data.cardImagePath} height="80" width="150"/>
