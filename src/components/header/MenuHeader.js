@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
-import { Link, useHistory  } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import { observer, useObserver } from 'mobx-react';
 import axios from 'axios';
 import clsx from 'clsx';
@@ -54,9 +54,7 @@ const MenuHeader = () => {
     const [showNoti, setShowNoti] = useState(false)
     const [alarmCount, setAlarmCount] = useState(0);
     const [alarmList, setAlarmList] = useState([]);
-    // const API_SERVER = "https://member.bitbank.click" ; 
     const API_SERVER = "https://gateway.bitbank.click" ;
-
 
     useEffect(() => {
         if( store.accessToken != null ) {
@@ -64,6 +62,12 @@ const MenuHeader = () => {
             console.log("Store 확인",store.accessToken, store.memberId, store)
         }
     },[store.accessToken])
+
+    useEffect(()=> {
+        if( menu===0 && !store.memberId ){
+            history.push('/login')
+        }
+    }, [menu])
 
     // 알림 갯수 조회
     const getAlarmCount = async(token, id) => {

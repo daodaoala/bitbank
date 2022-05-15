@@ -11,7 +11,6 @@ import { store } from './../stores/Store';
 const Setting = () => {
     let [loading, setLoading] = useState(false);  
     const [open, setOpen] = useState(false);  
-    // const API_SERVER = "https://member.bitbank.click" ;
     const API_SERVER = "https://gateway.bitbank.click" ;
 
     const handleOpenModal = () =>{
@@ -71,29 +70,33 @@ const Setting = () => {
         <div>
             <Grid container style={{marginTop:"70px"}}>
                 <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                    <Link to='mypage'>
-                        <button className={clsx('btn_1')}>
-                           마이페이지
-                        </button>
-                    </Link>
-                </Grid>
-                <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                    <button className={clsx('btn_1', 'margin_40')} onClick={getLogOut}>
-                        로그아웃
-                    </button>
-                </Grid>
-                <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
                     <Link to='/policy'>
                         <button className={clsx('btn_2')}>
                             약관 및 정책
                         </button>
                     </Link>
                 </Grid>
-                <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                    <button className={clsx('btn_3', 'margin_40')} onClick={handleOpenModal}>
-                        회원 탈퇴
-                    </button>
-                </Grid>
+                { store.memberId &&(
+                    <>
+                        <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                            <Link to='mypage'>
+                                <button className={clsx('btn_1', 'margin_40')}>
+                                마이페이지
+                                </button>
+                            </Link>
+                        </Grid>
+                        <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                            <button className={clsx('btn_1')} onClick={getLogOut}>
+                                로그아웃
+                            </button>
+                        </Grid>
+                        <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                            <button className={clsx('btn_3', 'margin_40')} onClick={handleOpenModal}>
+                                회원 탈퇴
+                            </button>
+                        </Grid>
+                    </>
+                )}
             </Grid>
             {open && (
             <div className="container">

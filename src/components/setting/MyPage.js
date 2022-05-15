@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { observer, useObserver } from 'mobx-react';
 import clsx from 'clsx'
-import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Loader from "./../common/Loader"
 import Modal from "./../common/Modal"
-
+import { store } from './../stores/Store';
 
 const MyPage = () => {
     let [loading, setLoading] = useState(false);   
     const [userInfo, setUserInfo] = useState({
-        memberPassword: 'abcdefg1!',
-        memberName: '권설아',
+        memberPassword: 'skaj0326!!',
+        memberName: store.memberName,
     }); 
     const [editCheck, setEditCheck] = useState(false);
     const [open, setOpen] = useState(false);   
@@ -51,7 +51,7 @@ const MyPage = () => {
         setOpen(value);
     }
 
-    return (
+    return useObserver(() =>(
         <div>
             <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="subtitle_2">회원 정보 수정</div>
@@ -111,7 +111,7 @@ const MyPage = () => {
                 <Modal notice={notice} onClose={handleClose}/>
             )}
         </div>
-    );
+    ));
 }
 
 export default MyPage;

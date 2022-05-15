@@ -161,6 +161,7 @@ span {
   margin: 0 4px;
 }
 .clickedMenu {
+  width: 97px;
   color: #2167C2;
 }
 .logo_subtitle {

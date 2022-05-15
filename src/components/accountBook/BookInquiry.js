@@ -1,18 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import OutputIcon from '@mui/icons-material/Output';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import Loader from "./../common/Loader"
+import { store } from '../stores/Store';
 
 
 const BookInquiry = () => {
     let [loading, setLoading] = useState(false);   
     let now = new Date();                           //현재 날짜 및 시간
     let todayMonth = now.getMonth() + 1;            //월 구하기
+
 
     return (
         <div>
