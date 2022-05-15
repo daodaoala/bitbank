@@ -107,7 +107,8 @@ const MenuHeader = () => {
                 console.log( '알람 목록 조회', response.data.alarmMessageList  )
                 if( response.status === 200 && response.data.rt === 200 ){   
                     setShowNoti(true)
-                    setAlarmList(response.data.alarmMessageList)
+                    setAlarmList(response.data.alarmDTOList)
+                    setAlarmCount(0)
                 }    
         } catch (e) {
             console.log( 'e', e.response );
@@ -174,7 +175,8 @@ const MenuHeader = () => {
                                                 </div>
                                                 <div className='padding_10'>
                                                     <div className='info4'>소비 리포트</div>
-                                                    <div className={clsx('padding_5','subtitle_8')}>{data}</div>
+                                                    <div className={clsx('padding_5','subtitle_8')}>{data.alarmMessage}</div>
+                                                    <div className={clsx('info4')}>{data.regDate}</div>
                                                 </div>
                                             </div>
                                         ))}
