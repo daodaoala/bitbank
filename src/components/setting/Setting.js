@@ -11,7 +11,8 @@ import { store } from './../stores/Store';
 const Setting = () => {
     let [loading, setLoading] = useState(false);  
     const [open, setOpen] = useState(false);  
-    const API_SERVER = "https://member.bitbank.click" ;
+    // const API_SERVER = "https://member.bitbank.click" ;
+    const API_SERVER = "https://gateway.bitbank.click" ;
 
     const handleOpenModal = () =>{
         setOpen(!open);
@@ -47,21 +48,17 @@ const Setting = () => {
     const getResigned = async(e) => {
         e.preventDefault();
         try {
-            const response = await axios.delete(API_SERVER + '/member/delete', {
+            const headers = {
+                'Authorization': `${store.accessToken}`,
+            };
+            const response = await axios.delete(API_SERVER + '/member/delete', { headers ,
                 data:{
                     memberId : store.memberId
                 },
             },
-            {
-                headers: { 
-                    Authorization : store.accessToken
-                },
-            })
+            )
             if (response.status === 200 && response.data.rt === 200) {
-                sessionStorage.removeItem('access_token');
-                sessionStorage.removeItem('memberName');
-                sessionStorage.removeItem('memberType');
-                sessionStorage.removeItem('memberId');
+                sessionStorage.clear();
                 store.logOut();
                 document.location.href = '/'
             }

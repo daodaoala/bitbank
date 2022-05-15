@@ -63,20 +63,17 @@ const theme = createTheme({
 
 function App() {
 
-
-  console.log("스토어 ", store.accessToken)
-
   return (
    <>
     <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      {/* 로그인 확인하는 함수 */}
-      <Router>
-        <div></div>
-        <MenuHeader />   
-        <Section />
-      </Router>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        {/* 로그인 확인하는 함수 */}
+        <Router>
+          <div></div>
+          <MenuHeader />   
+          <Section />
+        </Router>
+      </ThemeProvider>
     </Provider>
    </>
   );

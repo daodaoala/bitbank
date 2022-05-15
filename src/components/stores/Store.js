@@ -1,10 +1,10 @@
 import { observable, makeObservable, action } from 'mobx';
 
 const store = observable({
-    memberName : '',
-    memeberType : '',
+    memberName : sessionStorage.getItem("memberName") || '',
+    memeberType : sessionStorage.getItem("memeberType") || '',
     accessToken : sessionStorage.getItem('access_token') || '',
-    refreshToken : '',
+    refreshToken : sessionStorage.getItem("refresh_token") || '',
     memberId : sessionStorage.getItem('memberId') || '',
 
   setUserInfo(data) {
@@ -16,10 +16,6 @@ const store = observable({
     console.log("스토어 데이터", data)
   },
 
-  changeMemberName(e) {
-    this.memberName = e.target.value;
-  },
-  
   logOut() {
     this.memberName = null;
     this.memeberType = null;

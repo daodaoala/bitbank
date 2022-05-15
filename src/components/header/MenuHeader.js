@@ -60,27 +60,27 @@ const MenuHeader = () => {
     const [showNoti, setShowNoti] = useState(false)
     const [alarmCount, setAlarmCount] = useState(0);
     const [alarmList, setAlarmList] = useState([]);
-    const API_SERVER = "https://member.bitbank.click" ;
+    // const API_SERVER = "https://member.bitbank.click" ; 
+    const API_SERVER = "https://gateway.bitbank.click" ;
+
 
     useEffect(() => {
         if( store.accessToken != null ) {
             getAlarmCount(store.accessToken, store.memberId);
             console.log("Store 확인",store.accessToken, store.memberId, store)
         }
-    },[store])
+    },[store.accessToken])
 
     const getAlarmCount = async(token, id) => {
         try {
-                const response = await axios.get( API_SERVER +'/member/alarm-count',
-                {
+                const headers = {
+                    'Authorization': `${token}`,
+                };
+                const params = { memberId : id }
+                const response = await axios.get( API_SERVER +'/member/alarm-count',{ headers ,
                     params: {
                         memberId : id,
                     }
-                },
-                {
-                    headers: { 
-                        Authorization : token
-                    },
                 });
                 console.log( '알람 갯수 조회', response.data, response.data.alarmCount  )
                 if( response.status === 200 && response.data.rt === 200 ){   
@@ -93,16 +93,13 @@ const MenuHeader = () => {
 
     const getAlarmList = async(token, id) => {
         try {
-                const response = await axios.get( API_SERVER +'/member/alarm-list',
-                {
+                const headers = {
+                    'Authorization': `${token}`,
+                };
+                const response = await axios.get( API_SERVER +'/member/alarm-list',{ headers ,
                     params: {
                         memberId : id,
                     }
-                },
-                {
-                    headers: { 
-                        Authorization : token
-                    },
                 });
                 console.log( '알람 갯수 조회', response.data, response.data.alarmCount  )
                 if( response.status === 200 && response.data.rt === 200 ){   

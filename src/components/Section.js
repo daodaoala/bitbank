@@ -39,22 +39,21 @@ const Section = () => {
     const location = useLocation();
 
 
-    useEffect(() => {
-        console.log('로그인 체크', location.pathname)
-        checkLogged() 
-    }, []);
+    // useEffect(() => {
+    //     checkLogged() 
+    // }, []);
 
-     const checkLogged = async () => {
-        if( store.accessToken ) {
-            store.setUserInfo({
-                refreshToken: sessionStorage.getItem("refresh_token"),
-                memberName :  sessionStorage.getItem("memberName"),
-                memeberType : sessionStorage.getItem("memeberType"),
-                accessToken : store.accessToken,
-                memberId : store.memberId,
-            });
-        }
-     }
+    //  const checkLogged = async () => {
+    //     if( store.accessToken ) {
+    //         store.setUserInfo({
+    //             refreshToken: sessionStorage.getItem("refresh_token"),
+    //             memberName :  sessionStorage.getItem("memberName"),
+    //             memeberType : sessionStorage.getItem("memeberType"),
+    //             accessToken : store.accessToken,
+    //             memberId : store.memberId,
+    //         });
+    //     }
+    //  }
 
     return (
         <Box className={cls.root} display="flex" justifyContent="center">

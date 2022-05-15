@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { observer, useObserver  } from 'mobx-react';
-import { observable } from 'mobx'
 import clsx from 'clsx'
 import axios from 'axios';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
@@ -10,7 +9,6 @@ import Box from '@mui/material/Box';
 import logo from './../img/logo.png'
 import Loader from "./../common/Loader"
 import {store}  from './../stores/Store';
-import { PatternSharp } from '@mui/icons-material';
 
 
 const Login = () => {
@@ -20,7 +18,6 @@ const Login = () => {
         memberLoginId: '',
         memberPassword: '',
     });
-    const [logintTest, setLoginTest] = useState(false);   // api 붙이기 전 로그인 테스트
     const [idCheck, setIDcheck] = useState(false);
     const [pwCheck, setPWcheck] = useState(false);
 
@@ -41,10 +38,6 @@ const Login = () => {
         }
     }
 
-    // const setUserInfo = (data) =>{
-    //     store.setUserInfo(data);
-    // }
-
     const getLogin = async ( userInfo ) => {
         setLoading(true);
         try {
@@ -52,37 +45,16 @@ const Login = () => {
                 memberLoginId: userInfo.memberLoginId,
                 memberPassword: userInfo.memberPassword,
             })
-            console.log('로그인 response', response)
             if (response.status === 200 && response.data.rt === 200) {
                 console.log("유저", response.data);
                 store.setUserInfo(response.data);
-                console.log("Store",store.accessToken, store.memberId,store)
                 sessionStorage.setItem('access_token', response.data.accessToken);
                 sessionStorage.setItem('refresh_token', response.data.refreshToken);
                 sessionStorage.setItem('memberName', response.data.memberName);
                 sessionStorage.setItem('memberType', response.data.memberType);
                 sessionStorage.setItem('memberId',  response.data.memberId);
-                document.location.href = '/'
-                // store.setUserInfo({
-                //     memberName : response.data.memberName,
-                //     memeberType : response.data.memberType,
-                //     accessToken : response.data.accessToken,
-                //     refreshToken : response.data.refreshToken,
-                //     memberId : response.data.memberId,
-                // });
-
-                // Swal.fire({
-                //     text: "로그인 되었습니다.",
-                //     icon: "success",
-                //     showConfirmButton: false,
-                //     timer: 1200,
-                // }).then(() => {
-                //     if (location.state && location.state.referer) document.location.href = location.state.referer
-                //     else document.location.href = '/'
-                // });
-
+                document.location.href = '/';
             }
-            setLoginTest(true);
         } catch (error) {
             console.log('error', error)
                 // Swal.fire({
