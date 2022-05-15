@@ -18,6 +18,7 @@ import TableBody from '@mui/material/TableBody';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import CloseIcon from '@mui/icons-material/Close';
+import PaidIcon from '@mui/icons-material/Paid';
 import logo from './../img/logo.png'
 import {store} from './../stores/Store';
 // import useStore from './../../useStore';
@@ -71,6 +72,7 @@ const MenuHeader = () => {
         }
     },[store.accessToken])
 
+    // 알림 갯수 조회
     const getAlarmCount = async(token, id) => {
         try {
                 const headers = {
@@ -82,7 +84,7 @@ const MenuHeader = () => {
                         memberId : id,
                     }
                 });
-                console.log( '알람 갯수 조회', response.data, response.data.alarmCount  )
+                console.log( '알람 갯수 조회', response.data.alarmCount  )
                 if( response.status === 200 && response.data.rt === 200 ){   
                     setAlarmCount(response.data.alarmCount)
                 }    
@@ -91,6 +93,7 @@ const MenuHeader = () => {
         }
     }
 
+    // 알림 목록 조회
     const getAlarmList = async(token, id) => {
         try {
                 const headers = {
@@ -101,7 +104,7 @@ const MenuHeader = () => {
                         memberId : id,
                     }
                 });
-                console.log( '알람 갯수 조회', response.data, response.data.alarmCount  )
+                console.log( '알람 목록 조회', response.data.alarmMessageList  )
                 if( response.status === 200 && response.data.rt === 200 ){   
                     setShowNoti(true)
                     setAlarmList(response.data.alarmMessageList)
@@ -152,9 +155,9 @@ const MenuHeader = () => {
                                     style={{ top: '-70px' }}
                                     onClick={() => setShowNoti(false)}
                                 >
-                                    <div style={{ width: '475px', height: '416px' }}></div>
+                                    <div style={{ width: '475px', height: '350px' }}></div>
                                     <Container
-                                        style={{ position: 'absolute', top: '32px', left: '0', height: '400px' }}
+                                        style={{ position: 'absolute', top: '32px', left: '0', height: '330px', overflowY:"auto" }}
                                     >
                                         <Box display="flex" justifyContent="space-between">
                                             <Box color="primary" style={{ fontWeight: "bold", fontSize: "1rem" }}>
@@ -164,20 +167,17 @@ const MenuHeader = () => {
                                                 <CloseIcon onClick={(e) => { setShowNoti(false); e.stopPropagation(); }} className="pointer"></CloseIcon>
                                             </Box>
                                         </Box>
-                                        <TableContainer>
-                                            <Table className={cls.table} aria-label="simple table">
-                                                <TableHead className={cls.MuiTableHead}>
-                                                    <TableRow>
-                                                        <TableCell>ooo</TableCell>
-                                                        <TableCell>ooo</TableCell>
-                                                        <TableCell>ooo</TableCell>
-                                                        <TableCell>ooo</TableCell>
-                                                    </TableRow>
-                                                </TableHead>
-                                                <TableBody className={cls.MuiTableBody}>
-                                                </TableBody>
-                                            </Table>
-                                        </TableContainer>
+                                        {alarmList && alarmList.map((data, i) => (
+                                            <div className={clsx('margin_20','flex','alarm_data')}>
+                                                <div>
+                                                    <PaidIcon style={{ color:'#2167C2', fontSize: '35px'}}/>
+                                                </div>
+                                                <div className='padding_10'>
+                                                    <div className='info4'>소비 리포트</div>
+                                                    <div className={clsx('padding_5','subtitle_8')}>{data}</div>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </Container>
                                 </Menu>
                             </div> 

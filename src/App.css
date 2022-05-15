@@ -33,6 +33,9 @@ span {
 .margin_20_50 {
   margin: 20px 0 50px;
 }
+.padding_5 {
+  padding: 5px 0;
+}
 .padding_10 {
   padding: 0 10px;
 }
@@ -238,6 +241,13 @@ span {
   font-weight: 600;
   font-size: 23px;
   /* text-align: center; */
+  color: #424242;
+  letter-spacing: 1px;
+}
+.subtitle_8 {
+  font-family: 'JalpullineunharuM';
+  font-weight: 500;
+  font-size: 15px;
   color: #424242;
   letter-spacing: 1px;
 }
@@ -625,6 +635,9 @@ span {
   background-color: #FFFFFF;
   margin: 0 10px 0 -10px;
 }
+.alarm_data {
+  /* background-color: #63a0e68c; */
+}
 #lineChart .apexcharts-canvas{
   width: 450px;
   height: 400px;
@@ -646,7 +659,19 @@ span {
   border-bottom: 1px solid #F2F2F2;
   box-shadow: none;
 }
-
+::-webkit-scrollbar {
+  width: 4px;
+  height: 20%;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #dddddd;
+  border-radius: 15px;
+}
+::-webkit-scrollbar-track {
+  background-color: #f8f8f8;
+  border-radius: 15px;
+  width: 4px;
+}
 /* #root .MuiFormControl-root.MuiTextField-root{
   width: 230px;
 } */
