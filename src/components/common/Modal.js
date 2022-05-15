@@ -5,8 +5,11 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Box from '@mui/material/Box';
 
 
-const Modal = () => {
+const Modal = ({notice, onClose}) => {
 
+    const handleClose = () => {
+        onClose(false)
+    }
 
     return (
         <div>
@@ -19,12 +22,12 @@ const Modal = () => {
                                     <ErrorOutlineIcon style={{fontSize: '47px'}}/>
                                 </div>
                                 <div className="body-contentbox">
-                                    이름을 입력하세요.
+                                    {notice}
                                 </div>
                             </div>
                         </div>
                         <div className="popup-footer">
-                            <Box className="pop-btn" onClick={()=>setNameCheck(false)}>확인</Box>
+                            <Box className="pop-btn" onClick={handleClose}>확인</Box>
                         </div>
                     </div>
                 </div>

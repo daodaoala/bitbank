@@ -3,11 +3,10 @@ import { Link, useHistory } from 'react-router-dom';
 import { observer, useObserver  } from 'mobx-react';
 import clsx from 'clsx'
 import axios from 'axios';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import logo from './../img/logo.png'
 import Loader from "./../common/Loader"
+import Modal from "./../common/Modal"
 import {store}  from './../stores/Store';
 
 
@@ -18,8 +17,8 @@ const Login = () => {
         memberLoginId: '',
         memberPassword: '',
     });
-    const [idCheck, setIDcheck] = useState(false);
-    const [pwCheck, setPWcheck] = useState(false);
+    const [open, setOpen] = useState(false);   
+    const [notice, setNotice] = useState();           //모달 멘트 설정
 
     const { memberLoginId, memberPassword } = userInfo;
     const API_SERVER = "https://gateway.bitbank.click" ;
@@ -54,18 +53,15 @@ const Login = () => {
                 sessionStorage.setItem('memberType', response.data.memberType);
                 sessionStorage.setItem('memberId',  response.data.memberId);
                 document.location.href = '/';
-            }
+            } else if( response.status === 200 && response.data.rt > 499 ) {
+                    setNotice(`로그인에 실패했습니다.\n관리자에게 문의하시길 바랍니다.`)
+                    setOpen(true);
+            } else { 
+                setNotice(response.data.rtMsg)
+                setOpen(true);
+            } 
         } catch (error) {
             console.log('error', error)
-                // Swal.fire({
-                //     title: "로그인에 실패하였습니다",
-                //     html: "아이디 또는 비밀번호가 잘못 입력 되었습니다.<br>아이디와 비밀번호를 정확히 입력해주세요.",
-                //     icon: "error",
-                //     confirmButtonText: "확인",
-                //     buttons: {
-                //         text: "확인",
-                //     },
-                // });
         } 
         setLoading(false);
     }
@@ -73,12 +69,19 @@ const Login = () => {
     const handleValid = (e) => {
         e.preventDefault();
         if (!memberLoginId) {
-            setIDcheck(true);
+            setNotice("아이디를 입력하세요.")
+            setOpen(true);
         } else if (!memberPassword) {
-            setPWcheck(true);
+            setNotice("비밀번호를 입력하세요.")
+            setOpen(true);
         } else {
             getLogin(userInfo);
         }
+    }
+
+    
+    const handleClose = (value) => {
+        setOpen(value);
     }
 
     return useObserver(() => (
@@ -121,47 +124,8 @@ const Login = () => {
                     </Grid>
                 </Grid>
             </form>
-            {idCheck && (
-                <div className="container">
-                    <div className="popup-wrap" > 
-                        <div className="popup">	
-                            <div className="popup-body">
-                                <div className="body-content">
-                                    <div className="body-titlebox">
-                                        <ErrorOutlineIcon style={{fontSize: '47px'}}/>
-                                    </div>
-                                    <div className="body-contentbox">
-                                        아이디를 입력하세요.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="popup-footer">
-                                <Box className="pop-btn" onClick={()=>setIDcheck(false)}>확인</Box>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-            {pwCheck && (
-                <div className="container">
-                    <div className="popup-wrap" > 
-                        <div className="popup">	
-                            <div className="popup-body">
-                                <div className="body-content">
-                                    <div className="body-titlebox">
-                                        <ErrorOutlineIcon style={{fontSize: '47px'}}/>
-                                    </div>
-                                    <div className="body-contentbox">
-                                        비밀번호를 입력하세요.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="popup-footer">
-                                <Box className="pop-btn" onClick={()=>setPWcheck(false)}>확인</Box>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {open && (
+                <Modal notice={notice} onClose={handleClose}/>
             )}
         </div>
     ));

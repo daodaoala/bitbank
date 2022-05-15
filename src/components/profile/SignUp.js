@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import clsx from 'clsx'
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Loader from "./../common/Loader"
+import Modal from "./../common/Modal"
 
 const SignUp = () => {
     let [loading, setLoading] = useState(false);   
@@ -15,10 +15,10 @@ const SignUp = () => {
         memberPassword: '',
         memberName: '',
     });
-    const [nameCheck, setNameCheck] = useState(false);
-    const [idCheck, setIDcheck] = useState(false);
-    const [pwCheck, setPWcheck] = useState(false);
+
     const [accessCheck, setAccessCheck] = useState(false);
+    const [open, setOpen] = useState(false);   
+    const [notice, setNotice] = useState();           //모달 멘트 설정
 
     const { memberLoginId, memberPassword, memberName } = userInfo;
 
@@ -42,11 +42,14 @@ const SignUp = () => {
     const handleValid = (e) => {
         e.preventDefault();
         if ( !isValidName ) {
-            setNameCheck(true);
+            setNotice("이름을 입력하세요.")
+            setOpen(true);
         } else if( !isValidLoginid ){
-            setIDcheck(true);
+            setNotice(`입력하신 아이디가 형식에 맞지 않습니다.\n8자 이상의 아이디를 입력하세요.`)
+            setOpen(true);
         } else if ( !isValidPassword ) {
-            setPWcheck(true);
+            setNotice(`입력하신 비밀번호가 형식에 맞지 않습니다.\n6자 이상의 영문/숫자/특수문자를 사용하세요.`)
+            setOpen(true);
         } else {
             registerMember(userInfo)
         }
@@ -65,15 +68,19 @@ const SignUp = () => {
             console.log( '회원가입 성공 response', response.data, response.data.rt )
             if( response.status === 200 && response.data.rt === 201 ){   
                 setAccessCheck(true);
-            } else if ( response.status === 200 && response.data.rt === 409 ){   
-                alert(response.data.rtMsg)
+            } else {   
+                setNotice(response.data.rtMsg)
+                setOpen(true);
             }
         } catch (e) {
             console.log( 'e', e.response );
         }
-        // setLoading(false)
+        setLoading(false)
     }
 
+    const handleClose = (value) => {
+        setOpen(value);
+    }
 
     return (
         <div>
@@ -114,71 +121,6 @@ const SignUp = () => {
                     </Grid>  
                 </Grid>
             </form>
-            {nameCheck && (
-                <div className="container">
-                    <div className="popup-wrap" > 
-                        <div className="popup">	
-                            <div className="popup-body">
-                                <div className="body-content">
-                                    <div className="body-titlebox">
-                                        <ErrorOutlineIcon style={{fontSize: '47px'}}/>
-                                    </div>
-                                    <div className="body-contentbox">
-                                        이름을 입력하세요.
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="popup-footer">
-                                <Box className="pop-btn" onClick={()=>setNameCheck(false)}>확인</Box>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-            {idCheck && (
-                <div className="container">
-                    <div className="popup-wrap" > 
-                        <div className="popup">	
-                            <div className="popup-body">
-                                <div className="body-content">
-                                    <div className="body-titlebox">
-                                        <ErrorOutlineIcon style={{fontSize: '47px'}}/>
-                                    </div>
-                                    <div className="body-contentbox">
-                                        입력하신 아이디가 형식에 맞지 않습니다.<br/>
-                                        8자 이상의 아이디를 입력하세요.
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="popup-footer">
-                                <Box className="pop-btn" onClick={()=>setIDcheck(false)}>확인</Box>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-            {pwCheck && (
-                <div className="container">
-                    <div className="popup-wrap" > 
-                        <div className="popup">	
-                            <div className="popup-body">
-                                <div className="body-content">
-                                    <div className="body-titlebox">
-                                        <ErrorOutlineIcon style={{fontSize: '47px'}}/>
-                                    </div>
-                                    <div className="body-contentbox">
-                                        입력하신 비밀번호가 형식에 맞지 않습니다.<br/>
-                                        6자 이상의 영문/숫자/특수문자를 사용하세요.
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="popup-footer">
-                                <Box className="pop-btn" onClick={()=>setPWcheck(false)}>확인</Box>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
             {accessCheck && (
                 <div className="container">
                 <div className="popup-wrap" > 
@@ -201,6 +143,9 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>
+            )}
+            {open && (
+                <Modal notice={notice} onClose={handleClose}/>
             )}
         </div>
     );

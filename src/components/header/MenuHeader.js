@@ -168,7 +168,7 @@ const MenuHeader = () => {
                                             </Box>
                                         </Box>
                                         {alarmList && alarmList.map((data, i) => (
-                                            <div className={clsx('margin_20','flex','alarm_data')}>
+                                            <div className={clsx('margin_20','flex')}>
                                                 <div>
                                                     <PaidIcon style={{ color:'#2167C2', fontSize: '35px'}}/>
                                                 </div>

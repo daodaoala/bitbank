@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx'
 import { Link } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Grid from '@mui/material/Grid';
 import Loader from "./../common/Loader"
-
+import Modal from "./../common/Modal"
 
 
 const MyPage = () => {
@@ -15,8 +13,8 @@ const MyPage = () => {
         memberName: '권설아',
     }); 
     const [editCheck, setEditCheck] = useState(false);
-    const [nameCheck, setNameCheck] = useState(false);
-    const [pwCheck, setPWcheck] = useState(false);
+    const [open, setOpen] = useState(false);   
+    const [notice, setNotice] = useState();           //모달 멘트 설정
 
     const { memberPassword, memberName } = userInfo;
 
@@ -41,11 +39,17 @@ const MyPage = () => {
     const handleValid = (e) => {
         e.preventDefault();
         if ( !isValidName ) {
-            setNameCheck(true);
+            setNotice("이름을 입력하세요.")
+            setOpen(true);
         } else if ( !isValidPassword ) {
-            setPWcheck(true);
+            setNotice("입력하신 비밀번호가 형식에 맞지 않습니다.\n6자 이상의 영문/숫자/특수문자를 사용하세요.")
+            setOpen(true);
         }
     };
+
+    const handleClose = (value) => {
+        setOpen(value);
+    }
 
     return (
         <div>
@@ -103,48 +107,8 @@ const MyPage = () => {
                     </Grid> 
                 </Grid>
             </form>
-            {nameCheck && (
-                <div className="container">
-                    <div className="popup-wrap" > 
-                        <div className="popup">	
-                            <div className="popup-body">
-                                <div className="body-content">
-                                    <div className="body-titlebox">
-                                        <ErrorOutlineIcon style={{fontSize: '47px'}}/>
-                                    </div>
-                                    <div className="body-contentbox">
-                                        이름을 입력하세요.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="popup-footer">
-                                <Box className="pop-btn" onClick={()=>setNameCheck(false)}>확인</Box>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-            {pwCheck && (
-                <div className="container">
-                    <div className="popup-wrap" > 
-                        <div className="popup">	
-                            <div className="popup-body">
-                                <div className="body-content">
-                                    <div className="body-titlebox">
-                                        <ErrorOutlineIcon style={{fontSize: '47px'}}/>
-                                    </div>
-                                    <div className="body-contentbox">
-                                        입력하신 비밀번호가 형식에 맞지 않습니다.<br/>
-                                        6자 이상의 영문/숫자/특수문자를 사용하세요.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="popup-footer">
-                                <Box className="pop-btn" onClick={()=>setPWcheck(false)}>확인</Box>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {open && (
+                <Modal notice={notice} onClose={handleClose}/>
             )}
         </div>
     );
