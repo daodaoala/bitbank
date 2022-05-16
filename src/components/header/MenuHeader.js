@@ -57,11 +57,11 @@ const MenuHeader = () => {
     const API_SERVER = "https://gateway.bitbank.click" ;
 
     useEffect(() => {
-        if( store.accessToken != null ) {
+        if( store.memberId != null ) {
             getAlarmCount(store.accessToken, store.memberId);
             console.log("Store 확인",store.accessToken, store.memberId, store)
         }
-    },[store.accessToken])
+    },[store.memberId])
 
     useEffect(()=> {
         if( menu===0 && !store.memberId ){
@@ -128,7 +128,7 @@ const MenuHeader = () => {
                             <div className='logo' onClick={() => window.location.replace("/")}>ITBANK</div>
                         </Box>
 
-                        { !store.accessToken ? ( 
+                        { !store.memberId ? ( 
                             <Link to='/login'>
                                 <Box onClick={()=>setMenu(4)}>
                                     <button className="loginBtn">로그인</button>

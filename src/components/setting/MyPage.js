@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { observer, useObserver } from 'mobx-react';
+import axios from 'axios'
 import clsx from 'clsx'
 import Grid from '@mui/material/Grid';
 import Loader from "./../common/Loader"
@@ -20,7 +21,9 @@ const MyPage = () => {
 
     const isValidName = memberName.length >= 1;
     const specialCharacter = memberPassword.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-    const isValidPassword = memberPassword.length >= 6 && specialCharacter >= 1;
+    const isValidPassword = memberPassword.length >= 6 || specialCharacter >= 1;
+
+    const API_SERVER = "https://gateway.bitbank.click";
 
     const handleChange = (e) => {
         const { value, name } = e.target;
@@ -44,8 +47,46 @@ const MyPage = () => {
         } else if ( !isValidPassword ) {
             setNotice("입력하신 비밀번호가 형식에 맞지 않습니다.\n6자 이상의 영문/숫자/특수문자를 사용하세요.")
             setOpen(true);
-        }
+        } else modifyMember( userInfo );
     };
+
+
+    // 마이페이지 수정
+    const modifyMember = async( userInfo ) => {  
+        setLoading(true);
+        try {
+            const response = await axios.put(API_SERVER + '/member/modification', {
+                memberId : store.memberId,
+                memberName: userInfo.memberName,
+                memberPassword: userInfo.memberPassword,
+            },
+            {
+                headers: { 
+                    Authorization : store.accessToken
+                },
+            })
+            console.log( '마이페이지 수정 성공', response.data, response.data.rt )
+            if( response.status === 200 && response.data.rt === 200 ){   
+                sessionStorage.setItem('memberName', userInfo.memberName);
+                store.setUserInfo({
+                    memberName: userInfo.memberName,
+                    memeberType: store.memeberType,
+                    accessToken: store.accessToken,
+                    refreshToken: store.refreshToken,
+                    memberId: store.memberId,
+                });
+                setNotice('회원정보 수정이 완료되었습니다.');
+                setOpen(true);
+                setEditCheck(false);
+            } else {   
+                setOpen(true);
+            }
+        } catch (e) {
+            console.log( 'e', e.response );
+        }
+        setLoading(false)
+    }
+
 
     const handleClose = (value) => {
         setOpen(value);

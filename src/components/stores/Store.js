@@ -15,7 +15,9 @@ const store = observable({
     this.memberId = data.memberId;
     console.log("스토어 데이터", data)
   },
-
+  setMemberName(data) {
+    this.memberName = data.memberName;
+  },
   logOut() {
     this.memberName = null;
     this.memeberType = null;
@@ -25,13 +27,5 @@ const store = observable({
   }
 });
 
-// makeObservable(store, {
-//   memberName : observable,
-//   memeberType : observable,
-//   accessToken : observable,
-//   refreshToken : observable,
-//   memberId : observable,
-//   setUserInfo: action,
-// });
 
 export { store };
