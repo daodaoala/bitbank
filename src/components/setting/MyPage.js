@@ -9,7 +9,7 @@ import { store } from './../stores/Store';
 const MyPage = () => {
     let [loading, setLoading] = useState(false);   
     const [userInfo, setUserInfo] = useState({
-        memberPassword: 'skaj0326!!',
+        memberPassword: '',
         memberName: store.memberName,
     }); 
     const [editCheck, setEditCheck] = useState(false);
@@ -78,7 +78,7 @@ const MyPage = () => {
                             <div className='form_name'>비밀번호</div>
                             <div>
                                 {!editCheck ? (
-                                    <input type="password" placeholder="영문/숫자/특수문자 포함 6자 이상 비밀번호를 입력하세요" className='form_txt_1' value={memberPassword} disabled/>
+                                    <input type="password" placeholder="●●●●●●●●●" className='form_txt_1' value={memberPassword} disabled/>
                                 ):(
                                     <input type="password" placeholder="영문/숫자/특수문자 포함 6자 이상 비밀번호를 입력하세요" className='form_txt_1' value={memberPassword} name="memberPassword" onChange={handleChange}/>
                                 )}

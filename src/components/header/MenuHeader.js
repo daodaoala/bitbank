@@ -63,6 +63,11 @@ const MenuHeader = () => {
         }
     },[store.accessToken])
 
+    useEffect(()=> {
+        if( menu===0 && !store.memberId ){
+            history.push('/login')
+        }
+    }, [menu])
 
     // 알림 갯수 조회
     const getAlarmCount = async(token, id) => {

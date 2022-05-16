@@ -60,8 +60,7 @@ const IncomeStatistics = () => {
                 <div className={clsx('padding_10', 'subtitle_7')}>450.000원</div>
                 <Link to='/books/expenditurestatistics'>
                     <Box className={clsx('statistic_btn','flex')}>
-                        <div className='info8'>지출 </div>
-                        <div className='info8'>300.000원</div>
+                        <div className='info8'>지출 통계</div>
                     </Box>
                 </Link>
             </div>

@@ -19,8 +19,7 @@ const BookInquiry = () => {
 
     if (!store.memberId) {
         return <Redirect to={{ pathname: "/login", state: { from: pathname } }} />;
-    }
-
+    } else {
     return (
         <div>
             <div className={clsx('between','margin_10')}>
@@ -34,17 +33,9 @@ const BookInquiry = () => {
                     </Link>
                 </div>
             </div>
-            <div className='month'>{todayMonth}월</div>
             <div className={clsx('between','margin_20')}>
                 <div>
-                    <div className='flex'>
-                        <div className='info3'>지출</div>
-                        <div className='subtitle_7'>300.000원</div>
-                    </div>
-                    <div className='flex'>
-                        <div className='info3'>수입</div>
-                        <div className='subtitle_6'>450.000원</div>
-                    </div>
+                    <div className='month'>{todayMonth}월</div>
                 </div>
                 <div>
                     <Link to='/books/expenditurestatistics'>
@@ -128,6 +119,7 @@ const BookInquiry = () => {
             </Grid>
         </div>
     );
+}
 }
 
 export default BookInquiry;
