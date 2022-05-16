@@ -328,6 +328,33 @@ span {
   letter-spacing: 1px;
   white-space: nowrap;
 }
+.info7 {
+  font-family: 'JalpullineunharuM';
+  font-weight: 500;
+  font-size: 15px;
+  color: #434242;
+  letter-spacing: 1px;
+  white-space: nowrap;
+
+}
+.statistic_btn {
+  width: 125px;
+  height: 25px;
+  background-color: #fff;
+  border: 2px solid #2167C2;
+  border-radius: 20px;
+  color: #2167C2;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 3px;
+  cursor: pointer;
+  padding: 0 10px;
+  margin: 15px 5px;
+}
 .btn_1 {
   width: 300px;
   padding: 15px;

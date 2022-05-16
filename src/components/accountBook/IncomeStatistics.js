@@ -56,43 +56,46 @@ const IncomeStatistics = () => {
     return (
         <div>
             <div>
-            <div className='month'>{todayMonth}월 지출</div>
-            <div className='subtitle_7'>300.000원</div>
-            <div className='flex'>
-                <div className='info3'>수입</div>
-                <div className='subtitle_6'>450.000원</div>
-            </div>
+                <div className={clsx('padding_10', 'margin_10', 'info7')}>{todayMonth}월 수입</div>
+                <div className={clsx('padding_10', 'subtitle_7')}>450.000원</div>
+                <Link to='/books/expenditurestatistics'>
+                    <Box className={clsx('statistic_btn','flex')}>
+                        <div className='info8'>지출 </div>
+                        <div className='info8'>300.000원</div>
+                    </Box>
+                </Link>
             </div>
             <Grid container>
                 <Grid item xs={12} style={{ justifyContent: 'center', marginTop: '20px' }}> 
                     <div className='books_paper'>
-                        <div className='info4'>요약</div>
-                        <hr/>
-                        <div className={clsx('books_data', 'around')}>  
+                        <div className={clsx('subtitle_7')}>요약</div>
+                        {/* <hr/> */}
+                        <div className={clsx('books_data', 'between')}>  
                             <div className='info5'>5월 1주</div>
                             <div className='books_price'>200.000원</div>
                         </div>
-                        <div className={clsx('books_data', 'around')}>  
+                        <div className={clsx('books_data', 'between')}>  
                             <div className='info5'>5월 2주</div>
                             <div className='books_price'>60.000원</div>
                         </div>
-                        <div className={clsx('books_data', 'around')}>  
+                        <div className={clsx('books_data', 'between')}>  
                             <div className='info5'>5월 3주</div>
                             <div className='books_price'>10.000원</div>
                         </div>
-                        <div className={clsx('books_data', 'around')}>  
+                        <div className={clsx('books_data', 'between')}>  
                             <div className='info5'>5월 4주</div>
                             <div className='books_price'>10.000원</div>
                         </div>
-                        <div className={clsx('books_data', 'around')}>  
+                        <div className={clsx('books_data', 'between')}>  
                             <div className='info5'>5월 5주</div>
                             <div className='books_price'>10.000원</div>
                         </div>
+                        <hr/>
                         <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>총 지출</div>
+                            <div className='info7'>총 지출</div>
                             <div className='books_price'>300.000원</div>
                         </div>
-                    </div>    
+                    </div>     
 
                     <div className='statistic_paper'>
                         <div className={clsx('subtitle_7', 'margin_30')}>통계</div>
@@ -100,7 +103,7 @@ const IncomeStatistics = () => {
                             <Donut
                                 data={with4Slices}
                                 externalRadius={150}
-                                internalRadius={60}
+                                internalRadius={80}
                                 highlightSliceById={1}   //해당 슬라이드 id 강조
                                 hasHoverAnimation={true}
                                 isAnimated={true}

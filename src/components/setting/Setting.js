@@ -30,10 +30,7 @@ const Setting = () => {
             })
             console.log('로그아웃 response', response)
             if (response.status === 200 && response.data.rt === 200) {
-                sessionStorage.removeItem('access_token');
-                sessionStorage.removeItem('memberName');
-                sessionStorage.removeItem('memberType');
-                sessionStorage.removeItem('memberId');
+                sessionStorage.clear();
                 store.logOut();
                 document.location.href = '/'
             }

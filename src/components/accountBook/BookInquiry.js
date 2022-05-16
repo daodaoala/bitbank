@@ -24,7 +24,7 @@ const BookInquiry = () => {
     return (
         <div>
             <div className={clsx('between','margin_10')}>
-                <div className='subtitle_6'>권설아님 가계부</div>
+                <div className='subtitle_6'>{store.memberName}님 가계부</div>
                 <div>
                     <Link to='/books/search'>
                         <SearchIcon style={{ margin:"0 15px", color:"#676767", fontSize: "30px" }}/>
