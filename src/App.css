@@ -335,7 +335,6 @@ span {
   color: #434242;
   letter-spacing: 1px;
   white-space: nowrap;
-
 }
 .statistic_btn {
   width: 73px;
@@ -352,7 +351,9 @@ span {
   line-height: 1.5;
   letter-spacing: 3px;
   cursor: pointer;
-  padding: 0 10px;
+  text-align: center;
+  align-items: center;
+  padding: 1px 10px;
   margin: 15px 5px;
 }
 .btn_1 {

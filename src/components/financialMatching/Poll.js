@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory  } from 'react-router-dom';
 import clsx from 'clsx';
+import axios from 'axios';
 import Grid from '@mui/material/Grid';
 import Loader from "./../common/Loader"
 
 
 const Poll = () => {
+    let history = useHistory();
     let [loading, setLoading] = useState(false);   
     const [consumptionList, setConsumptionList] = useState({    // 소비패턴 리스트
         consumptionAmountCost : '',                             // 월간 사용 금액    
@@ -20,6 +22,7 @@ const Poll = () => {
         marketCost : '',                                        // 대형마트비
         convenienceStoreCost : '',                              // 편의점비
     });
+    const API_SERVER = "https://gateway.bitbank.click" ;
 
     const { consumptionAmountCost, transportationCost, phoneCost, eatCost, drinkCost, shoppingCost, oilCost, bookCost, insuranceCost, marketCost, convenienceStoreCost } = consumptionList;
 
@@ -43,6 +46,39 @@ const Poll = () => {
         return comma(uncomma(str));
     };
     
+
+    const getCardRecommendation = async( e, consumptionList ) => {
+        e.preventDefault();
+        try {
+                const response = await axios.get( API_SERVER +'/card/recommendation-list', 
+                {
+                    params: {
+                        consumptionAmountCost : consumptionList.consumptionAmountCost,
+                        transportationCost : consumptionList.transportationCost,
+                        phoneCost : consumptionList.phoneCost,
+                        eatCost : consumptionList.eatCost,
+                        drinkCost : consumptionList.drinkCost ,
+                        shoppingCost : consumptionList.shoppingCost ,
+                        oilCost : consumptionList.oilCost ,
+                        bookCost : consumptionList.bookCost ,
+                        insuranceCost : consumptionList.insuranceCost ,
+                        marketCost : consumptionList.marketCost ,
+                        convenienceStoreCost : consumptionList.convenienceStoreCost ,
+                    }
+                });
+                console.log( '카드 추천 조회', response.data )
+                if( response.status === 200 && response.data.rt === 200 ){   
+                    history.push({
+                        pathname: "/cards/profits",
+                        state: { cardList: response.data.cardDTOList }
+                    })
+                }    
+        } catch (e) {
+            console.log( 'e', e.response );
+        }
+    }
+
+
     return (
         <div>
             <div className={clsx('item_center','subtitle_2')}>나에게 가장 좋은 카드는?</div>
@@ -120,11 +156,14 @@ const Poll = () => {
                     </Grid>
 
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                        <Link to='/cards/profits'>
-                            <button className={clsx('btn_1', 'margin_30')}>
+                        {/* <Link to={{
+                            pathname:'/cards/profits',
+                            cardList:cardList
+                        }}> */}
+                            <button className={clsx('btn_1', 'margin_30')} onClick={(e) => getCardRecommendation(e, consumptionList)}>
                                 완료
                             </button>
-                        </Link>
+                        {/* </Link> */}
                     </Grid>
                 </Grid>
             </form>

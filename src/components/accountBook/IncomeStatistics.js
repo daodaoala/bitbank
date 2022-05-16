@@ -59,8 +59,8 @@ const IncomeStatistics = () => {
                 <div className={clsx('padding_10', 'margin_10', 'info7')}>{todayMonth}월 수입</div>
                 <div className={clsx('padding_10', 'subtitle_7')}>450.000원</div>
                 <Link to='/books/expenditurestatistics'>
-                    <Box className={clsx('statistic_btn','flex')}>
-                        <div className='info8'>지출 통계</div>
+                    <Box className={clsx('statistic_btn')}>
+                        <div>지출 통계</div>
                     </Box>
                 </Link>
             </div>
@@ -102,7 +102,7 @@ const IncomeStatistics = () => {
                             <Donut
                                 data={with4Slices}
                                 externalRadius={150}
-                                internalRadius={80}
+                                internalRadius={60}
                                 highlightSliceById={1}   //해당 슬라이드 id 강조
                                 hasHoverAnimation={true}
                                 isAnimated={true}
