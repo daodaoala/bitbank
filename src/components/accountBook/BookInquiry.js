@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import OutputIcon from '@mui/icons-material/Output';
@@ -11,10 +11,15 @@ import { store } from '../stores/Store';
 
 
 const BookInquiry = () => {
+    const { pathname } = useLocation();
     let [loading, setLoading] = useState(false);   
     let now = new Date();                           //현재 날짜 및 시간
     let todayMonth = now.getMonth() + 1;            //월 구하기
 
+
+    if (!store.memberId) {
+        return <Redirect to={{ pathname: "/login", state: { from: pathname } }} />;
+    }
 
     return (
         <div>

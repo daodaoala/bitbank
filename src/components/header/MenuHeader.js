@@ -63,11 +63,6 @@ const MenuHeader = () => {
         }
     },[store.accessToken])
 
-    useEffect(()=> {
-        if( menu===0 && !store.memberId ){
-            history.push('/login')
-        }
-    }, [menu])
 
     // 알림 갯수 조회
     const getAlarmCount = async(token, id) => {
@@ -75,7 +70,6 @@ const MenuHeader = () => {
                 const headers = {
                     'Authorization': `${token}`,
                 };
-                const params = { memberId : id }
                 const response = await axios.get( API_SERVER +'/member/alarm-count',{ headers ,
                     params: {
                         memberId : id,
@@ -105,7 +99,7 @@ const MenuHeader = () => {
                 if( response.status === 200 && response.data.rt === 200 ){   
                     setShowNoti(true)
                     setAlarmList(response.data.alarmDTOList)
-                    // setAlarmCount(0)
+                    setAlarmCount(0)
                 }    
         } catch (e) {
             console.log( 'e', e.response );
