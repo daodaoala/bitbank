@@ -48,7 +48,7 @@ const Section = () => {
     //         store.setUserInfo({
     //             refreshToken: sessionStorage.getItem("refresh_token"),
     //             memberName :  sessionStorage.getItem("memberName"),
-    //             memeberType : sessionStorage.getItem("memeberType"),
+    //             memberType : sessionStorage.getItem("memberType"),
     //             accessToken : store.accessToken,
     //             memberId : store.memberId,
     //         });

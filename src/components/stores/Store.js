@@ -20,7 +20,7 @@ const store = observable({
   },
   logOut() {
     this.memberName = null;
-    this.memeberType = null;
+    this.memberType = null;
     this.accessToken = null;
     this.refreshToken = null;
     this.memberId = null;

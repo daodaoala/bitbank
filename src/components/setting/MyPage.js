@@ -20,10 +20,12 @@ const MyPage = () => {
     const { memberPassword, memberName } = userInfo;
 
     const isValidName = memberName.length >= 1;
-    const specialCharacter = memberPassword.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-    const isValidPassword = memberPassword.length >= 6 || specialCharacter >= 1;
+    // const specialCharacter = memberPassword.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+    // const isValidPassword = memberPassword.length >= 6 || specialCharacter >= 1;
 
     const API_SERVER = "https://gateway.bitbank.click";
+
+    console.log("ddddddd",store)
 
     const handleChange = (e) => {
         const { value, name } = e.target;
@@ -44,10 +46,12 @@ const MyPage = () => {
         if ( !isValidName ) {
             setNotice("이름을 입력하세요.")
             setOpen(true);
-        } else if ( !isValidPassword ) {
-            setNotice("입력하신 비밀번호가 형식에 맞지 않습니다.\n6자 이상의 영문/숫자/특수문자를 사용하세요.")
-            setOpen(true);
-        } else modifyMember( userInfo );
+        } 
+        // else if ( store.memberType!=='S' && !isValidPassword ) {
+        //     setNotice("입력하신 비밀번호가 형식에 맞지 않습니다.\n6자 이상의 영문/숫자/특수문자를 사용하세요.")
+        //     setOpen(true);
+        // } 
+        else modifyMember( userInfo );
     };
 
 
@@ -70,7 +74,7 @@ const MyPage = () => {
                 sessionStorage.setItem('memberName', userInfo.memberName);
                 store.setUserInfo({
                     memberName: userInfo.memberName,
-                    memeberType: store.memeberType,
+                    memberType: store.memberType,
                     accessToken: store.accessToken,
                     refreshToken: store.refreshToken,
                     memberId: store.memberId,
