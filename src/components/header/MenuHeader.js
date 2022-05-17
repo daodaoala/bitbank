@@ -121,7 +121,11 @@ const MenuHeader = () => {
                 <Container maxWidth="sm" style={{padding:"0px"}}>
                    <div className={clsx('between', 'padding_10')}>
                         <div>
-                            <ArrowBackIosIcon style={{margin: '10px 0', color: '#6E6E6E'}} onClick={goBack}/>
+                            {menu === 4 ? (
+                                <ArrowBackIosIcon style={{margin: '10px 0', color: '#F2F2F2'}}/>
+                            ):(
+                                <ArrowBackIosIcon style={{margin: '10px 0', color: '#6E6E6E'}} onClick={goBack}/>
+                            )}
                         </div>
                         <Box display="flex">
                             <img src={logo} alt="B" width="17px" height="25px" style={{margin:"10px 20px"}}/>
