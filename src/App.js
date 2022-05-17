@@ -6,6 +6,7 @@ import { Provider } from 'mobx-react';
 import { store } from  './components/stores/Store'
 import Section from './components/Section'
 import MenuHeader from './components/header/MenuHeader';
+import ScrollTop from './components/ScrollTop';
 import './App.css';
 
 
@@ -67,9 +68,9 @@ function App() {
    <>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        {/* 로그인 확인하는 함수 */}
         <Router>
           <div></div>
+          <ScrollTop />
           <MenuHeader />   
           <Section />
         </Router>

@@ -24,9 +24,9 @@ const Modal = ({notice, onClose}) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="popup-footer">
-                            <Box className="pop-btn" onClick={handleClose}>확인</Box>
-                        </div>
+                        <Box className="popup-footer" onClick={handleClose}>
+                            <Box className="pop-btn">확인</Box>
+                        </Box>
                     </div>
                 </div>
             </div>

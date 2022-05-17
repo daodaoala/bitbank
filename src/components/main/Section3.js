@@ -69,7 +69,7 @@ const slideUp = keyframes`
 `;
 
 export const Wrapper = styled.div`
-  background-color: #F7F8E0;
+  background-color: #CEF6E3;
   padding-top: 75px;
   height: 100vh;
   width: 100vw;
@@ -84,6 +84,7 @@ export const Wrapper = styled.div`
   }
   @media (max-width: 400px) {
     display: block;
+    padding-top: 20px;
   }
 `;
 

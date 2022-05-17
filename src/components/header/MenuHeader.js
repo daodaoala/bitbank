@@ -135,9 +135,9 @@ const MenuHeader = () => {
                                 </Box>
                             </Link>
                          ):(
-                            <div style={{width:"35px", marginTop:"-10px"}}>
+                            <div style={{width:"38px", marginTop:"-10px"}}>
                                 <Badge badgeContent={alarmCount} color="primary">
-                                    <NotificationsIcon style={{color:"#848484", fontSize:"30px"}} onClick={(e) => getAlarmList(store.accessToken, store.memberId)}/>
+                                    <NotificationsIcon style={{color:"#848484", fontSize:"25px"}} onClick={(e) => getAlarmList(store.accessToken, store.memberId)}/>
                                 </Badge>
                                 <Menu
                                     id="simple-menu1"

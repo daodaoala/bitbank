@@ -174,11 +174,11 @@ const AddBook = () => {
                     </Grid>
 
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                        <Link to='/cards/profits'>
+                        {/* <Link> */}
                             <button className={clsx('btn_1', 'margin_40')}>
                                 저장
                             </button>
-                        </Link>
+                        {/* </Link> */}
                     </Grid>
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
                           <Loader loading={loading} />

@@ -76,6 +76,7 @@ export const Wrapper = styled.div`
   padding: 0 20px;
   align-items: center;
   display: flex;
+  margin-top: -50px;
   @media (max-width: 710px) {
     display: block;
   }
@@ -84,6 +85,7 @@ export const Wrapper = styled.div`
   }
   @media (max-width: 400px) {
     display: block;
+    padding-top: 20px;
   }
 `;
 
@@ -124,7 +126,7 @@ export const Text = styled.div`
 `;
 
 export const ChattImage = styled.img`
-  margin-left: 180px;
+  margin-left: 200px;
   border-radius: 45px;
   height: 100%;
   @media (max-width: 1300px) {
@@ -148,13 +150,6 @@ export const ChattImage = styled.img`
     width: 85vw;
     height: 81vh;
   }
-`;
-
-export const FoodImgDiv = styled.div`
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
-  animation-name: ${slideUp};
-  animation-fill-mode: forwards;
 `;
 
 export const Img = styled.img`

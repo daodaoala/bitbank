@@ -52,24 +52,28 @@ export const Div = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  margin-top: -40px;
+  margin: -40px 0 0;
+  overflow: hidden;
   @media (max-width: 710px) {
     background-size: cover;
   }
-  @media (max-width: 576px) {
+  @media (max-width: 500px) {
     background-size: cover;
+    margin: -25px -5px 0 5px;
   }
   @media (max-width: 400px) {
     background-size: cover;
-    margin: -55px 0 0 12px;
+    margin: -55px -10px 0 0px;
   }
 `;
 
 export const Wrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.21);
+  width: 100vw;
   height: 100vh;
   align-items: center;
   display: flex;
+  overflow: hidden;
 `;
 
 export const TextDiv = styled.div`
