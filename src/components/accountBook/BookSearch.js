@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { store } from '../stores/Store';
 import clsx from 'clsx';
+import axios from 'axios';
 import moment from 'moment';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
@@ -28,17 +30,20 @@ const defaultMenuProps = {
 
 const BookSearch = () => {
     let [loading, setLoading] = useState(false);     
-    const [searchList, setSearchList] = useState(0);                        // 검색어 목록
     const [accountBookType, setAccountBookType] = useState(0);              // 가계부 내역 유형
-    const [expenditureType, setExpenditureType] = useState(["0"]);          // 지출 유형
-    const [incomeType, setIncomeType] = useState(["0"]);                    // 수입 유형
-    const [transferType, setTransferType] = useState(["0"]);                // 이체 유형
+    const [expenditureType, setExpenditureType] = useState([]);          // 지출 유형
+    const [incomeType, setIncomeType] = useState([]);                    // 수입 유형
+    const [transferType, setTransferType] = useState([]);                // 이체 유형
     const [searchDateType, setSearchDateType] = useState("A");              // 기간  
     const [searhStartDate, setSearhStartDate] = useState(new Date());       // 시작 날짜
     const [searchEndDate , setSearchEndDate] = useState(new Date());        // 종료 날짜
+    const [nowKeyword, setNowKeyword] = useState();                         // 현재 검색어
+    const [accountbookList, setAccountBookList] = useState([]); 
     const [keywords, setKeywords] = useState(                               // 검색어
         JSON.parse(localStorage.getItem('keywords') || '[]'),
       )
+
+    const API_SERVER = "https://gateway.bitbank.click" ;
 
     useEffect(() => {
         localStorage.setItem('keywords', JSON.stringify(keywords))
@@ -47,6 +52,7 @@ const BookSearch = () => {
 
     //검색어 추가
     const handleAddKeyword = (keyword) => {
+        setNowKeyword(keyword);
         console.log('text', keyword)
         const newKeyword = {
             id: Date.now(),
@@ -91,7 +97,7 @@ const BookSearch = () => {
     //가계부 세부 내역 유형
     const selectCategory = (e) => {
         if(accountBookType === "P"){
-            setExpenditureType(e.target.value);
+            setExpenditureType([e.target.value]);
         } else if(accountBookType === "I"){
             setIncomeType(e.target.value);
         } else if(accountBookType === "T"){
@@ -99,10 +105,52 @@ const BookSearch = () => {
         } 
     }
 
-    const getSearchList = (e) => {
+    // 가계부 목록 조회
+    const getAccountBook = async(e) => {
         e.preventDefault();
-        setSearchList(1)
+        try {
+                const response = await axios.post( API_SERVER +'/account-book/search', {
+                    memberId : store.memberId,
+                    searchKeyword : nowKeyword,
+                    searchDateType : searchDateType,
+                    searhStartDate : "",
+                    searchEndDate : "",
+                    expenditureType : expenditureType,
+                    incomeType : incomeType,
+                    transferType : transferType,
+                },
+                {
+                    headers: { 
+                        Authorization : store.accessToken
+                    },
+                });
+                console.log( '가계부 목록 조회', response.data.accountBookSearchByDailyDTOList )
+                if( response.status === 200 && response.data.rt === 200 ){    
+                    setAccountBookList(response.data.accountBookSearchByDailyDTOList)
+                }    
+        } catch (e) {
+            console.log( 'e', e.response );
+        }
     }
+
+    function comma(str) {
+        str = String(str);
+        var minus = str.substring(0, 1);
+        
+        str = str.replace(/[^\d]+/g, '');
+        str = str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+    
+        if(minus == "-") str = "-"+str;
+        
+        return str;
+    }
+    
+
+    // 금액 포맷
+    const getValue = (value) => {
+        return comma(value);
+    }
+    
     
     return (
         <div className='filter'>
@@ -243,77 +291,27 @@ const BookSearch = () => {
                         )}
                     </Grid>
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                        <button className={clsx('btn_1', 'margin_40')} onClick={getSearchList}>
+                        <button className={clsx('btn_1', 'margin_40')} onClick={getAccountBook}>
                             조회
                         </button>
                     </Grid>
                 </Grid>
             </form>
-            {searchList===1 && (
-                <div className='books_paper'>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info4'>10일 화요일</div>
-                        <div className='info4'>-85.000원</div>
-                    </div>
-                    <hr/>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>김밥나라</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>LGUPLUS 통신 요금 자동 청구 5월</div>
-                        <div className='books_price'>-60.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>홈플러스</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>이마트</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>신세계 백화점</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>롯데마트</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>홈플러스</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>이마트</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>신세계 백화점</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>롯데마트</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>홈플러스</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>이마트</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>신세계 백화점</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                    <div className={clsx('books_data', 'between')}>  
-                        <div className='info5'>롯데마트</div>
-                        <div className='books_price'>-5.000원</div>
-                    </div>
-                </div>    
-            )}
+                {accountbookList && accountbookList.map((data, i) => (
+                    <div className='books_paper'>
+                        <div className={clsx('books_data', 'between')}>  
+                            <div className='info4'>{data.date} {data.day}</div>
+                            <div className='info4'>{getValue(data.accountBookTotalByDaily)}</div>
+                        </div>
+                        <hr/>
+                        {data.accountBookInfoDTOList && data.accountBookInfoDTOList.map((o, index) =>(
+                            <div className={clsx('books_data', 'between')}>  
+                                <div className='info5'>{o.accountBookInfo}</div>
+                                <div className='books_price'>{getValue(o.accountMoney)}원</div>
+                            </div>
+                        ))}
+                    </div>    
+                ))}   
         </div>
     );
 }

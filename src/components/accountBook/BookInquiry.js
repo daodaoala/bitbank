@@ -124,7 +124,7 @@ const BookInquiry = () => {
                             {data.accountBookInfoDTOList && data.accountBookInfoDTOList.map((o, index) =>(
                                 <div className={clsx('books_data', 'between')}>  
                                     <div className='info5'>{o.accountBookInfo}</div>
-                                    <div className='books_price'>{getValue(o.accountMoney)}</div>
+                                    <div className='books_price'>{getValue(o.accountMoney)}원</div>
                                 </div>
                             ))}
                         </div>    
