@@ -115,16 +115,18 @@ const MyPage = () => {
                                 )}
                             </div>
                         </div>
-                        <div className={clsx('between', 'margin_30')}>
-                            <div className='form_name'>비밀번호</div>
-                            <div>
-                                {!editCheck ? (
-                                    <input type="password" placeholder="●●●●●●●●●" className='form_txt_1' value={memberPassword} disabled/>
-                                ):(
-                                    <input type="password" placeholder="영문/숫자/특수문자 포함 6자 이상 비밀번호를 입력하세요" className='form_txt_1' value={memberPassword} name="memberPassword" onChange={handleChange}/>
-                                )}
+                        {store.memberType !== 'S' && (
+                            <div className={clsx('between', 'margin_30')}>
+                                <div className='form_name'>비밀번호</div>
+                                <div>
+                                    {!editCheck ? (
+                                        <input type="password" placeholder="●●●●●●●●●" className='form_txt_1' value={memberPassword} disabled/>
+                                    ):(
+                                        <input type="password" placeholder="영문/숫자/특수문자 포함 6자 이상 비밀번호를 입력하세요" className='form_txt_1' value={memberPassword} name="memberPassword" onChange={handleChange}/>
+                                    )}
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </Grid>
 
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { observer, useObserver  } from 'mobx-react';
+import KakaoLogin from "react-kakao-login";
 import clsx from 'clsx'
 import axios from 'axios';
 import Grid from '@mui/material/Grid';
@@ -9,6 +10,8 @@ import Loader from "./../common/Loader"
 import Modal from "./../common/Modal"
 import {store}  from './../stores/Store';
 
+
+const { Kakao } = window;
 
 const Login = () => {
     const history = useHistory();
@@ -37,6 +40,7 @@ const Login = () => {
         }
     }
 
+    // 일반 로그인
     const getLogin = async ( userInfo ) => {
         setLoading(true);
         try {
@@ -66,6 +70,7 @@ const Login = () => {
         setLoading(false);
     }
 
+    // 유효성 검사
     const handleValid = (e) => {
         e.preventDefault();
         if (!memberLoginId) {
@@ -79,9 +84,44 @@ const Login = () => {
         }
     }
 
-    
     const handleClose = (value) => {
         setOpen(value);
+    }
+
+    const kakaoLoginClickHandler = (e) => {
+        e.preventDefault();
+        if (!Kakao.isInitialized()) {
+            Kakao.init("38b3f0aff12245b4f33fdeb8829476c6");
+        }
+      
+        Kakao.Auth.login({
+            success: function (authObj) {
+                fetch(API_SERVER + '/auth/login/social', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        socialToken : authObj.access_token,
+                        memberName : null,
+                    }),
+                })
+                .then(res => res.json())
+                .then(res => {
+                    console.log("소셜 로그인 성공", res)
+                    store.setUserInfo(res);
+                    sessionStorage.setItem('access_token', res.accessToken);
+                    sessionStorage.setItem('refresh_token', res.refreshToken);
+                    sessionStorage.setItem('memberName', res.memberName);
+                    sessionStorage.setItem('memberType', res.memberType);
+                    sessionStorage.setItem('memberId',  res.memberId);
+                    history.push("/")
+                })
+            },
+            fail: function (err) {
+                alert(JSON.stringify(err))
+            }
+        })
     }
 
     return useObserver(() => (
@@ -111,17 +151,18 @@ const Login = () => {
                                 회원가입
                             </button>
                         </Link>
-                    </Grid>             
+                    </Grid>    
+                    <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
+                        <button className={clsx('kakao_btn', 'margin_30')} onClick={kakaoLoginClickHandler}>
+                            카카오 로그인
+                        </button>
+                    </Grid>         
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
                         <div className='margin_40_10'>
                             <Loader loading={loading} />
                         </div>
                     </Grid>
-                    <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center'}}>
-                        {/* <button className='signup_btn' onClick={handleClick}>
-                            소셜
-                        </button> */}
-                    </Grid>
+
                 </Grid>
             </form>
             {open && (

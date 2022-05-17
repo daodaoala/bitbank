@@ -2,14 +2,14 @@ import { observable, makeObservable, action } from 'mobx';
 
 const store = observable({
     memberName : sessionStorage.getItem("memberName") || '',
-    memeberType : sessionStorage.getItem("memeberType") || '',
+    memberType : sessionStorage.getItem("memberType") || '',
     accessToken : sessionStorage.getItem('access_token') || '',
     refreshToken : sessionStorage.getItem("refresh_token") || '',
     memberId : sessionStorage.getItem('memberId') || '',
 
   setUserInfo(data) {
     this.memberName = data.memberName;
-    this.memeberType = data.memeberType;
+    this.memberType = data.memberType;
     this.accessToken = data.accessToken;
     this.refreshToken = data.refreshToken;
     this.memberId = data.memberId;
