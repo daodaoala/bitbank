@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
+import axios from 'axios';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -13,9 +14,64 @@ import { store } from '../stores/Store';
 const BookInquiry = () => {
     const { pathname } = useLocation();
     let [loading, setLoading] = useState(false);   
+    const [accountbookList, setAccountBookList] = useState([]);  
+    const [expenditureTotal, setExpenditureTotal] = useState();
+    const [incomeTotal, setIncomeTotal] = useState();
     let now = new Date();                           //현재 날짜 및 시간
     let todayMonth = now.getMonth() + 1;            //월 구하기
 
+    const API_SERVER = "https://gateway.bitbank.click" ;
+
+    useEffect(() => {
+        getAccountBook();
+    }, [])
+
+    // 가계부 목록 조회
+    const getAccountBook = async() => {
+        try {
+                const response = await axios.post( API_SERVER +'/account-book/search', {
+                    memberId : store.memberId,
+                    searchKeyword : null,
+                    searchDateType : "M",
+                    searhStartDate : null,
+                    searchEndDate : null,
+                    expenditureType : null,
+                    incomeType : null,
+                    transferType : null,
+                },
+                {
+                    headers: { 
+                        Authorization : store.accessToken
+                    },
+                });
+                console.log( '가계부 목록 조회', response.data.accountBookSearchByDailyDTOList )
+                if( response.status === 200 && response.data.rt === 200 ){    
+                    setAccountBookList(response.data.accountBookSearchByDailyDTOList);
+                    setIncomeTotal(comma(response.data.incomeTotal))
+                    setExpenditureTotal(comma(response.data.expenditureTotal))
+                }    
+        } catch (e) {
+            console.log( 'e', e.response );
+        }
+    }
+
+    function comma(str) {
+        str = String(str);
+        var minus = str.substring(0, 1);
+     
+        str = str.replace(/[^\d]+/g, '');
+        str = str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+    
+        if(minus == "-") str = "-"+str;
+     
+        return str;
+    }
+    
+
+    // 금액 포맷
+    const getValue = (value) => {
+       return comma(value);
+    }
 
     if (!store.memberId) {
         return <Redirect to={{ pathname: "/login", state: { from: pathname } }} />;
@@ -33,14 +89,20 @@ const BookInquiry = () => {
                     </Link>
                 </div>
             </div>
+            <div className='month'>{todayMonth}월</div>
             <div className={clsx('between','margin_20')}>
                 <div>
-                    <div className='month'>{todayMonth}월</div>
+                    <div className='flex'>
+                        <div className='info3'>지출</div>
+                        <div className='subtitle_7'>{expenditureTotal}원</div>
+                    </div>
+                    <div className='flex'>
+                        <div className='info3'>수입</div>
+                        <div className='subtitle_6'>{incomeTotal}원</div>
+                    </div>
                 </div>
                 <div>
-                    <Link to='/books/expenditurestatistics'>
-                        <button className="categoryBtn">분석</button>
-                    </Link> 
+                    <button className="categoryBtn">분석</button>
                 </div>
             </div>
             <Grid container>
@@ -51,75 +113,26 @@ const BookInquiry = () => {
                             <AddIcon style={{ color:"#676767", fontSize: "25px" }}/>
                             <div className='info4'>내역 추가</div>
                         </Box>
-                    </Link>    
-                    <div className='books_paper'>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info4'>10일 화요일</div>
-                            <div className='info4'>-85.000원</div>
-                        </div>
-                        <hr/>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>김밥나라</div>
-                            <div className='books_price'>-5.000원</div>
-                        </div>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>LGUPLUS 통신 요금 자동 청구 5월</div>
-                            <div className='books_price'>-60.000원</div>
-                        </div>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>홈플러스</div>
-                            <div className='books_price'>-5.000원</div>
-                        </div>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>이마트</div>
-                            <div className='books_price'>-5.000원</div>
-                        </div>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>신세계 백화점</div>
-                            <div className='books_price'>-5.000원</div>
-                        </div>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>롯데마트</div>
-                            <div className='books_price'>-5.000원</div>
-                        </div>
-                    </div>    
-
-                    <div className='books_paper'>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info4'>9일 월요일</div>
-                            <div className='info4'>-85.000원</div>
-                        </div>
-                        <hr/>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>김밥나라</div>
-                            <div className='books_price'>-5.000원</div>
-                        </div>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>LGUPLUS 통신 요금 자동 청구 5월</div>
-                            <div className='books_price'>-60.000원</div>
-                        </div>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>홈플러스</div>
-                            <div className='books_price'>-5.000원</div>
-                        </div>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>이마트</div>
-                            <div className='books_price'>-5.000원</div>
-                        </div>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>신세계 백화점</div>
-                            <div className='books_price'>-5.000원</div>
-                        </div>
-                        <div className={clsx('books_data', 'between')}>  
-                            <div className='info5'>롯데마트</div>
-                            <div className='books_price'>-5.000원</div>
-                        </div>
-                    </div>            
+                    </Link> 
+                    {accountbookList && accountbookList.map((data, i) => (
+                        <div className='books_paper'>
+                            <div className={clsx('books_data', 'between')}>  
+                                <div className='info4'>{data.date} {data.day}</div>
+                                <div className='info4'>{getValue(data.accountBookTotalByDaily)}</div>
+                            </div>
+                            <hr/>
+                            {data.accountBookInfoDTOList && data.accountBookInfoDTOList.map((o, index) =>(
+                                <div className={clsx('books_data', 'between')}>  
+                                    <div className='info5'>{o.accountBookInfo}</div>
+                                    <div className='books_price'>{getValue(o.accountMoney)}</div>
+                                </div>
+                            ))}
+                        </div>    
+                    ))}       
                 </Grid>
             </Grid>
         </div>
     );
-}
-}
+}}
 
 export default BookInquiry;

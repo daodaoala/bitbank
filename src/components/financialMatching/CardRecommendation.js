@@ -18,8 +18,8 @@ const CardRecommendation = () => {
 
     console.log("dddddddddd",cardList)
 
-        // 카드 혜택 유형
-        const getValue = (type) => {
+    // 카드 혜택 유형
+    const getValue = (type) => {
         try {
             if( type === 'T') {
                 return "교통비 혜택"
