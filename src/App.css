@@ -94,6 +94,7 @@ span {
   color: #2167C2;
   letter-spacing: 3px;
   margin: 10px -15px;
+  cursor: default;
 }
 .header_menu {
   width: 97px;

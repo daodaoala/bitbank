@@ -104,7 +104,7 @@ const AddBook = () => {
         } else if (!accountBookType) {
             setNotice("분류를 선택하세요.")
             setOpen(true);
-        } else if (expenditureType.length === 0 && incomeType.length === 0 && transferType.length === 0 ) {
+        } else if (!expenditureType && !incomeType && !transferType ) {
             setNotice("카테고리를 선택하세요.")
             setOpen(true);
         } else {
