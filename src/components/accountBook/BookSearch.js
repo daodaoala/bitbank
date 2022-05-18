@@ -30,18 +30,18 @@ const defaultMenuProps = {
 
 const BookSearch = () => {
     let [loading, setLoading] = useState(false);     
-    const [accountBookType, setAccountBookType] = useState(0);              // 가계부 내역 유형
+    const [accountBookType, setAccountBookType] = useState([]);              // 가계부 내역 유형
     const [expenditureType, setExpenditureType] = useState([]);          // 지출 유형
     const [incomeType, setIncomeType] = useState([]);                    // 수입 유형
     const [transferType, setTransferType] = useState([]);                // 이체 유형
-    const [searchDateType, setSearchDateType] = useState("A");              // 기간  
-    const [searhStartDate, setSearhStartDate] = useState(new Date());       // 시작 날짜
-    const [searchEndDate , setSearchEndDate] = useState(new Date());        // 종료 날짜
+    const [searchDateType, setSearchDateType] = useState("M");              // 기간  
+    const [searhStartDate, setSearhStartDate] = useState();       // 시작 날짜
+    const [searchEndDate , setSearchEndDate] = useState();        // 종료 날짜
     const [nowKeyword, setNowKeyword] = useState();                         // 현재 검색어
     const [accountbookList, setAccountBookList] = useState([]); 
     const [keywords, setKeywords] = useState(                               // 검색어
         JSON.parse(localStorage.getItem('keywords') || '[]'),
-      )
+    )
 
     const API_SERVER = "https://gateway.bitbank.click" ;
 
@@ -98,12 +98,19 @@ const BookSearch = () => {
     const selectCategory = (e) => {
         if(accountBookType === "P"){
             setExpenditureType([e.target.value]);
+            setIncomeType([]);
+            setTransferType([]);
         } else if(accountBookType === "I"){
-            setIncomeType(e.target.value);
+            setIncomeType([e.target.value]);
+            setExpenditureType([]);
+            setTransferType([]);
         } else if(accountBookType === "T"){
-            setTransferType(e.target.value);
+            setTransferType([e.target.value]);
+            setIncomeType([]);
+            setExpenditureType([]);
         } 
     }
+    console.log("dddddddddd",nowKeyword)
 
     // 가계부 목록 조회
     const getAccountBook = async(e) => {
@@ -113,8 +120,9 @@ const BookSearch = () => {
                     memberId : store.memberId,
                     searchKeyword : nowKeyword,
                     searchDateType : searchDateType,
-                    searhStartDate : "",
-                    searchEndDate : "",
+                    accountBookType : accountBookType,
+                    searhStartDate : searhStartDate,
+                    searchEndDate : searchEndDate,
                     expenditureType : expenditureType,
                     incomeType : incomeType,
                     transferType : transferType,

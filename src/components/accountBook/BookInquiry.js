@@ -118,7 +118,7 @@ const BookInquiry = () => {
                         <div className='books_paper'>
                             <div className={clsx('books_data', 'between')}>  
                                 <div className='info4'>{data.date} {data.day}</div>
-                                <div className='info4'>{getValue(data.accountBookTotalByDaily)}</div>
+                                <div className='info4'><b>{getValue(data.accountBookTotalByDaily)}원</b></div>
                             </div>
                             <hr/>
                             {data.accountBookInfoDTOList && data.accountBookInfoDTOList.map((o, index) =>(
