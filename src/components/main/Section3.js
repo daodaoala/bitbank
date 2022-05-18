@@ -1,7 +1,6 @@
 import React from 'react'
-import styled, { keyframes } from "styled-components";
-import { useHistory } from "react-router-dom";
-import { Zoom, Slide } from "react-awesome-reveal";
+import styled from "styled-components";
+import { Zoom } from "react-awesome-reveal";
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import ranking from './../img/ranking.png'; 
@@ -24,9 +23,9 @@ const Section3 = () => {
                                     </Zoom>
                                     </TextDiv>
                                     <div>
-                                      <Slide triggerOnce={false} direction={"right"} duration={1500}>
-                                          <ChattImage src={ranking} alt="banner"/>
-                                      </Slide>
+                                      <Zoom triggerOnce={false} duration={1500}>
+                                          <Image src={ranking} alt="banner"/>
+                                      </Zoom>
                                     </div>
                                 </Wrapper>
                             </Grid>
@@ -41,32 +40,6 @@ const Section3 = () => {
 
 export default Section3;
 
-
-const slideUp = keyframes`
-  0% {
-      transform: translateX(0%);
-  }
-  10% {
-      transform: translateX(10%);
-      transform: translateY(10%);
-  }
-  20% {
-      transform: translateX(20%);
-      transform: translateY(20%);
-  }
-  50% {
-      transform: translateX(50%);
-     
-  }
-  75% {
-      transform: translateX(75%);
-    
-  }
-  100% {
-      transform: translateX(100%);
-      
-  }
-`;
 
 export const Wrapper = styled.div`
   background-color: #CEF6E3;
@@ -83,6 +56,7 @@ export const Wrapper = styled.div`
     display: block;
   }
   @media (max-width: 400px) {
+    width: 90vw;
     display: block;
     padding-top: 20px;
   }
@@ -124,7 +98,7 @@ export const Text = styled.div`
   }
 `;
 
-export const ChattImage = styled.img`
+export const Image = styled.img`
   margin-left: 180px;
   border-radius: 45px;
   height: 100%;
@@ -145,21 +119,8 @@ export const ChattImage = styled.img`
     height: 82vh;
   }
   @media (max-width: 400px) {
-    margin-left: 12%;
+    margin-left: 3%;
     width: 85vw;
     height: 81vh;
   }
 `;
-
-export const FoodImgDiv = styled.div`
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
-  animation-name: ${slideUp};
-  animation-fill-mode: forwards;
-`;
-
-export const Img = styled.img`
-  position: relative;
-`;
-
-export const Div = styled.div``;

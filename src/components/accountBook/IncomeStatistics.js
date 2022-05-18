@@ -5,10 +5,8 @@ import { Link, useHistory } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Donut } from "britecharts-react";
-// import LegendChart from "britecharts/dist/umd/legend.min";
 import { store } from '../stores/Store';
 import Loader from "./../common/Loader"
-// import { LegendChart, DataLegend } from "./../chart";
 
 const IncomeStatistics = () => {
     const API_SERVER = "https://gateway.bitbank.click";
@@ -103,7 +101,6 @@ const IncomeStatistics = () => {
                                 hasHoverAnimation={true}
                                 isAnimated={true}
                             />
-                            {/* <LegendChart data={donutGraphList} /> */}
                         </div>
                     </div>               
                 </Grid>

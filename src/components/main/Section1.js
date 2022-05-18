@@ -63,7 +63,7 @@ export const Div = styled.div`
   }
   @media (max-width: 400px) {
     background-size: cover;
-    margin: -55px -10px 0 0px;
+    margin: -55px -10px 0 -10px;
   }
 `;
 

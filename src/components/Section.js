@@ -26,11 +26,14 @@ import {store}  from './stores/Store';
 
 const useStyles = makeStyles((theme) => ({
     root:{
-        margin:"130px auto 100PX", 
+        margin:"130px auto 0", 
         padding: "0 100px", 
         minHeight: "calc( 100vh - 594px )",
         height:"auto",
         fontSize: "16px",
+        [theme.breakpoints.down('mobile')]: {
+            marginBottom: "60px" 
+        },
     }
 }));
 

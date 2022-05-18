@@ -1,7 +1,6 @@
 import React from 'react'
-import styled, { keyframes } from "styled-components";
-import { useHistory } from "react-router-dom";
-import { Zoom, Slide } from "react-awesome-reveal";
+import styled from "styled-components";
+import { Zoom } from "react-awesome-reveal";
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import card from './../img/card1.png'; 
@@ -24,9 +23,9 @@ const Section2 = () => {
                                       </Zoom>
                                     </TextDiv>
                                     <div>
-                                      <Slide triggerOnce={false} direction={"right"} duration={1500}>
-                                          <ChattImage src={card} alt="banner"/>
-                                      </Slide>
+                                      <Zoom triggerOnce={false} duration={1500}>
+                                          <Image src={card} alt="card"/>
+                                      </Zoom>
                                     </div>
                                 </Wrapper>
                             </Grid>
@@ -40,33 +39,6 @@ const Section2 = () => {
 }
 
 export default Section2;
-
-
-const slideUp = keyframes`
-  0% {
-      transform: translateX(0%);
-  }
-  10% {
-      transform: translateX(10%);
-      transform: translateY(10%);
-  }
-  20% {
-      transform: translateX(20%);
-      transform: translateY(20%);
-  }
-  50% {
-      transform: translateX(50%);
-     
-  }
-  75% {
-      transform: translateX(75%);
-    
-  }
-  100% {
-      transform: translateX(100%);
-      
-  }
-`;
 
 export const Wrapper = styled.div`
   background-color: #EFF8FB;
@@ -86,6 +58,7 @@ export const Wrapper = styled.div`
   @media (max-width: 400px) {
     display: block;
     padding-top: 20px;
+    width: 90vw;
   }
 `;
 
@@ -125,7 +98,7 @@ export const Text = styled.div`
   }
 `;
 
-export const ChattImage = styled.img`
+export const Image = styled.img`
   margin-left: 200px;
   border-radius: 45px;
   height: 100%;
@@ -146,14 +119,8 @@ export const ChattImage = styled.img`
     height: 82vh;
   }
   @media (max-width: 400px) {
-    margin-left: 10%;
+    margin-left: 3%;
     width: 85vw;
     height: 81vh;
   }
 `;
-
-export const Img = styled.img`
-  position: relative;
-`;
-
-export const Div = styled.div``;
