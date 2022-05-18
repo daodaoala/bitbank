@@ -88,70 +88,42 @@ const Login = () => {
         setOpen(value);
     }
 
-    // const kakaoLoginClickHandler = (e) => {
-    //     e.preventDefault();
-    //     if (!Kakao.isInitialized()) {
-    //         Kakao.init("38b3f0aff12245b4f33fdeb8829476c6");
-    //     }
-      
-    //     Kakao.Auth.login({
-    //         success: function (authObj) {
-    //             fetch(API_SERVER + '/auth/login/social', {
-    //                 method: "POST",
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                 },
-    //                 body: JSON.stringify({
-    //                     socialToken : authObj.access_token,
-    //                     memberName : null,
-    //                 }),
-    //             })
-    //             .then(res => res.json())
-    //             .then(res => {
-    //                 console.log("소셜 로그인 성공", res)
-    //                 store.setUserInfo(res);
-    //                 sessionStorage.setItem('access_token', res.accessToken);
-    //                 sessionStorage.setItem('refresh_token', res.refreshToken);
-    //                 sessionStorage.setItem('memberName', res.memberName);
-    //                 sessionStorage.setItem('memberType', res.memberType);
-    //                 sessionStorage.setItem('memberId',  res.memberId);
-    //                 history.push("/")
-    //             })
-    //         },
-    //         fail: function (err) {
-    //             alert(JSON.stringify(err))
-    //         }
-    //     })
-    // }
-
-
-    function kakaoLoginClickHandler(e) {
+    const kakaoLoginClickHandler = (e) => {
         e.preventDefault();
         if (!Kakao.isInitialized()) {
             Kakao.init("38b3f0aff12245b4f33fdeb8829476c6");
-        }  
+        }
+      
         Kakao.Auth.login({
-            success: (authObj) => {
-                Kakao.Auth.setAccessToken(authObj.access_token);
-                Kakao.API.request({
-                    url: 'v2/user/me',
-                    data: {
-                        property_keys: [
-                            'properties.profile_nickname',
-                        ]
+            success: function (authObj) {
+                fetch(API_SERVER + '/auth/login/social', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
                     },
-                    success: function(res) {
-                        console.lg("ddddddddd",res)
-                    }, fail: function (err) {
-                        alert(JSON.stringify(err))
-                    }
-                });
+                    body: JSON.stringify({
+                        socialToken : authObj.access_token,
+                        memberName : null,
+                    }),
+                })
+                .then(res => res.json())
+                .then(res => {
+                    console.log("소셜 로그인 성공", res)
+                    store.setUserInfo(res);
+                    sessionStorage.setItem('access_token', res.accessToken);
+                    sessionStorage.setItem('refresh_token', res.refreshToken);
+                    sessionStorage.setItem('memberName', res.memberName);
+                    sessionStorage.setItem('memberType', res.memberType);
+                    sessionStorage.setItem('memberId',  res.memberId);
+                    history.push("/")
+                })
             },
             fail: function (err) {
                 alert(JSON.stringify(err))
             }
         })
     }
+
 
     return useObserver(() => (
         <div>

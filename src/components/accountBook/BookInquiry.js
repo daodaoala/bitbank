@@ -102,7 +102,9 @@ const BookInquiry = () => {
                     </div>
                 </div>
                 <div>
-                    <button className="categoryBtn">분석</button>
+                    <Link to='/books/ExpenditureStatistics'>
+                        <button className="categoryBtn">분석</button>
+                    </Link>
                 </div>
             </div>
             <Grid container>

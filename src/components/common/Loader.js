@@ -3,8 +3,10 @@ import { css } from "@emotion/react";
 
 const override = css`
   display: block;
-  margin: 0 auto;
+  margin: 20px auto;
+  padding: 20px auto;
   border-color: "4A90E2";
+
 `;
 
 const Loader = ({loading}) => {
