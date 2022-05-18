@@ -11,13 +11,6 @@ const CardRecommendation = () => {
     let [loading, setLoading] = useState(false);   
     const [cardList, setCardList] = useState(location.state.cardList);
 
-    useEffect(()=>{
-        // setCardList(location.props.cardDTOList)
-        // console.log("dddddddddddd",cardDTOList)
-    }, [])
-
-    console.log("dddddddddd",cardList)
-
     // 카드 혜택 유형
     const getValue = (type) => {
         try {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, Redirect, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import axios from 'axios';
-import { Link, Redirect, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import OutputIcon from '@mui/icons-material/Output';
@@ -68,11 +68,6 @@ const BookInquiry = () => {
     }
     
 
-    // 금액 포맷
-    const getValue = (value) => {
-       return comma(value);
-    }
-
     if (!store.memberId) {
         return <Redirect to={{ pathname: "/login", state: { from: pathname } }} />;
     } else {
@@ -120,13 +115,13 @@ const BookInquiry = () => {
                         <div className='books_paper'>
                             <div className={clsx('books_data', 'between')}>  
                                 <div className='info4'>{data.date} {data.day}</div>
-                                <div className='info4'><b>{getValue(data.accountBookTotalByDaily)}원</b></div>
+                                <div className='info4'><b>{comma(data.accountBookTotalByDaily)}원</b></div>
                             </div>
                             <hr/>
                             {data.accountBookInfoDTOList && data.accountBookInfoDTOList.map((o, index) =>(
                                 <div className={clsx('books_data', 'between')}>  
                                     <div className='info5'>{o.accountBookInfo}</div>
-                                    <div className='books_price'>{getValue(o.accountMoney)}원</div>
+                                    <div className='books_price'>{comma(o.accountMoney)}원</div>
                                 </div>
                             ))}
                         </div>    
