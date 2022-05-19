@@ -38,7 +38,6 @@ const ExpenditureStatistics = () => {
                         month : todayMonth,
                     }
                 });
-                console.log( '월 별 지출 통계 조회', response.data )
                 if( response.status === 200 && response.data.rt === 200 ){   
                     setMonthlyTotal(comma(response.data.monthlyTotal));
                     setWeeklyTotalList(response.data.weeklyTotalDTOList);
@@ -143,7 +142,6 @@ const ExpenditureStatistics = () => {
                                         // tickAmount: 10,
                                         labels: {
                                             formatter: function(value, timestamp, opts) {
-                                                console.log("timestamp",timestamp)
                                                 return opts.dateFormatter(new Date(timestamp), 'dd')
                                             }
                                         }

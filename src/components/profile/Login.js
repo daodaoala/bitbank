@@ -49,7 +49,6 @@ const Login = () => {
                 memberPassword: userInfo.memberPassword,
             })
             if (response.status === 200 && response.data.rt === 200) {
-                console.log("유저", response.data);
                 store.setUserInfo(response.data);
                 sessionStorage.setItem('access_token', response.data.accessToken);
                 sessionStorage.setItem('refresh_token', response.data.refreshToken);
@@ -108,7 +107,6 @@ const Login = () => {
                 })
                 .then(res => res.json())
                 .then(res => {
-                    console.log("소셜 로그인 성공", res)
                     store.setUserInfo(res);
                     sessionStorage.setItem('access_token', res.accessToken);
                     sessionStorage.setItem('refresh_token', res.refreshToken);

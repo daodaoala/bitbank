@@ -54,7 +54,6 @@ const BookSearch = () => {
     //검색어 추가
     const handleAddKeyword = (keyword) => {
         setNowKeyword(keyword);
-        console.log('text', keyword)
         const newKeyword = {
             id: Date.now(),
             keyword: keyword,                 //현재 입력한 검색어
@@ -84,14 +83,12 @@ const BookSearch = () => {
     // 시작 날짜 선택
     const handleSelectStartDate = (newValue) => {
         const date = moment(newValue).format('YYYY-MM-DD HH:mm:ss');    // 날짜 포맷
-        console.log("date",date)
         setSearhStartDate(date);
     };
 
     // 종료 날짜 선택
     const handleSelectEndDate = (newValue) => {
         const date = moment(newValue).format('YYYY-MM-DD HH:mm:ss');    // 날짜 포맷
-        console.log("date",date)
         setSearchEndDate(date);
     };
 
@@ -111,7 +108,6 @@ const BookSearch = () => {
             setExpenditureType([]);
         } 
     }
-    console.log("dddddddddd",nowKeyword)
 
     // 가계부 목록 조회
     const getAccountBook = async(e) => {
@@ -133,7 +129,6 @@ const BookSearch = () => {
                         Authorization : store.accessToken
                     },
                 });
-                console.log( '가계부 목록 조회', response.data.accountBookSearchByDailyDTOList )
                 if( response.status === 200 && response.data.rt === 200 ){    
                     if( response.data.accountBookSearchByDailyDTOList.length === 0 ){
                         setSearchList(false);
