@@ -130,6 +130,7 @@ const BookSearch = () => {
                     },
                 });
                 if( response.status === 200 && response.data.rt === 200 ){    
+                    console.log("리퀘스트 성공", nowKeyword,searchDateType,accountBookType,searhStartDate,searchEndDate,expenditureType,incomeType,transferType )
                     if( response.data.accountBookSearchByDailyDTOList.length === 0 ){
                         setSearchList(false);
                     } else setSearchList(true);
