@@ -57,7 +57,7 @@ const Login = () => {
                 sessionStorage.setItem('memberType', response.data.memberType);
                 sessionStorage.setItem('memberId',  response.data.memberId);
                 document.location.href = '/';
-            } else if( response.status === 200 && response.data.rt > 499 ) {
+            } else if( response.status === 500 ) {
                     setNotice(`로그인에 실패했습니다.\n관리자에게 문의하시길 바랍니다.`)
                     setOpen(true);
             } else { 
