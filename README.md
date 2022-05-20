@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# 💵 bitbank
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`건강한 생활 습관 · 소비 습관을 만들어 주는 가계부`
 
-## Available Scripts
+## Bitbank services will give you experience in creating healthy lifestyles and consumption habits.
 
-In the project directory, you can run:
+### [Welcome to bitbank](https://bithumb.bitbank.click)
 
-### `npm start`
+![demo](https://user-images.githubusercontent.com/76933244/169328053-1e54ccae-99af-487a-9b4c-cc537f7a1df5.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# ℹ️ Info
 
-### `npm test`
+1. 회원 관리 서비스
+   1. 소셜 로그인을 할 수 있습니다. 소셜 계정이 없으시면 일반 회원 가입을 할 수 있습니다.
+   2. 내 정보를 간편하게 관리할 수 있습니다.
+   3. 사용자 맞춤 알림 서비스를 제공합니다.
+2. 가계부 관리 서비스
+   1. 내 지출·수입·이체 내역을 기록하고 월 별로 관리할 수 있습니다.
+   2. 월 별 지출·수입 통계를 확인할 수 있습니다.
+   3. 데이터 내보내기를 통해 통계 데이터를 PDF로, 가계부 데이터를 Excel로 받아볼 수 있습니다.
+3. 금융 매칭 서비스
+   1. 혜택이 많은 카드를 조회할 수 있습니다.
+   2. 내 소비 습관에 따라 카드를 추천받습니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+# 💡 Development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### FrontEnd Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/MobX-FF9955?style=for-the-badge&logo=MobX&logoColor=black"> <img src="https://img.shields.io/badge/styled_components-DB7093?style=for-the-badge&logo=styled_components&logoColor=white">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### BackEnd Stack
 
-### `npm run eject`
+<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/json%20web%20tokens-000000?style=for-the-badge&logo=json%20web%20tokens&logoColor=white"> <img src="https://img.shields.io/badge/swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=white"> <img src="https://img.shields.io/badge/apache%20kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white"> <img src="https://img.shields.io/badge/elasticsearch-005571?style=for-the-badge&logo=elasticsearch&logoColor=white"> <img src="https://img.shields.io/badge/logstash-005571?style=for-the-badge&logo=logstash&logoColor=white"> <img src="https://img.shields.io/badge/kibana-005571?style=for-the-badge&logo=kibana&logoColor=white"> <img src="https://img.shields.io/badge/aws%20lambda-FF9900?style=for-the-badge&logo=awslambda&logoColor=white"> <img src="https://img.shields.io/badge/amazon%20s3-569A31?style=for-the-badge&logo=amazons3&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Deploy Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white"> <img src="https://img.shields.io/badge/amazon%20aws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# 💠 Wireframe & User Flow
 
-## Learn More
+[Wireframe & User Flow](https://www.figma.com/file/iX2D6GN5mY60td2Ay66RJy/bitbank?node-id=0%3A1)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 👥 Contributors
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<table>
+    <tr>
+       <td align="center" width="130px" height="160px">
+            <a href="https://github.com/daodaoala"><img height="100px" width="100px" src="https://avatars.githubusercontent.com/u/67010327?v=4" /></a>
+            <br />
+            <a href="https://github.com/daodaoala">SeolA.Kwon</a>
+        </td>
+        <td align="center" width="130px" height="160px">
+            <a href="https://github.com/powerstar13"><img height="100px" width="100px" src="https://avatars.githubusercontent.com/u/42233927?v=4" /></a>
+            <br />
+            <a href="https://github.com/powerstar13">JunSung.Hong</a>
+        </td>
+         <td align="center" width="130px" height="160px">
+            <a href="https://github.com/jsh0116"><img height="100px" width="100px" src="https://avatars.githubusercontent.com/u/62865808?v=4" /></a>
+            <br />
+            <a href="https://github.com/jsh0116">SeungHoon.Jeong</a>
+        </td>
+        <td align="center" width="130px" height="160px">
+            <a href="https://github.com/boookk"><img height="100px" width="100px" src="https://avatars.githubusercontent.com/u/76933244?v=4" /></a>
+            <br />
+            <a href="https://github.com/boookk">BoGyeong.Kang</a>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">권설아</td>
+        <td align="center">홍준성</td>
+        <td align="center">정승훈</td>
+        <td align="center">강보경</td>
+    </tr>
+    <tr>
+        <td align="center">FrontEnd</td>
+        <td align="center">BackEnd</td>
+        <td align="center">BackEnd</td>
+        <td align="center">BackEnd</td>
+    </tr>
+</table>
